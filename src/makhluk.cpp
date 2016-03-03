@@ -1,4 +1,5 @@
 #include "makhluk.h"
+#include "Board.h"
 #include <iostream>
 #include <string>
 
@@ -39,15 +40,24 @@ using namepace std;
 		}
 
 //From Class Ayam
+		
+		void Ayam::gerak() {
+			//Ayam akan menjauhi elang, mendekati cacing
+			
 
-		//i know nothing to do here
+		}
 
 //From Class Elang
 
-		//brh
+		void Elang::gerak() {
+			//Elang akan bergerak mendekati ayam yang ada dalam jangkauannya, jika ada
+		}
 		
 //From Class Cacing
 
-		//for the sake of indentation, forgive me to doing something not useful lol
+		void Cacing::gerak() {
+			//Cacing akan bergerak mendekati 
+
+		}
 		
 //From Class Padi

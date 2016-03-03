@@ -6,8 +6,9 @@ using namespace std;
 class Board{
 	public:
 		Board(); // constructor
-		void Display(){}
+		void Display(){};
 		void MovePoint(int, int);
+		void AlgoGerak(int){};
 
 	private:
 		static int mtr[100][100];

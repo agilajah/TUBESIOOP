@@ -37,7 +37,7 @@ class Hewan : public Makhluk{ //Descendant from mahluk
 			Hewan(int x, int y, char karakter):
 				langkah(langkah), Makhluk(x, y, karakter), {};
 
-		virtual void gerak()=0;		//pure virutal, this class can't be instantiated, too (?)
+		virtual void gerak()=0;		//pure virtual, this class can't be instantiated, too (?)
 
 
 		//Getter-Setter
@@ -55,6 +55,7 @@ class Ayam : public Hewan {		//Descendant from hewan
 		explicit
 			Ayam(int langkah, int x, int y): Hewan(x, y, langkah, 'A') {};
 
+		void gerak();
 		virtual const char* bicara() {return "Ptok Ptok";}
 
 }
@@ -65,6 +66,7 @@ class Elang : public Hewan { 	//Descendant from Hewan
 		explicit
 			Elang(int langkah, int x, int y): Hewan(x, y, langkah, 'E'){};
 
+		void gerak();
 		virtual const char* bicara() {return "Eaaak";}
 }
 
@@ -73,15 +75,16 @@ class Cacing : public Cacing {
 		explicit
 			Cacing(int langkah, int x, int y): Hewan(x, y, langkah, 'C'){};
 
-		virtual const char* bicara() {return "I can't speak, baka baka.";}
+		void gerak();
+		virtual const char* bicara() {return "I can't speak, baka baka!.";}
 }
 
 class Tumbuhan : public Makhluk{
 	public :
 		explicit
-			Cacing(int langkah, int x, int y): Hewan(x, y, langkah, 'C'){};
+			Cacing(int langkah, int x, int y): Hewan(x, y, langkah, 'P'){};
 
-		virtual const char* bicara() {return "I can't speak, baka baka.";}
+		virtual const char* bicara() {return "I can't speak, baka baka!.";}
 	
 };
 
