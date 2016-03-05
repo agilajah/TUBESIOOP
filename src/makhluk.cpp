@@ -4,9 +4,14 @@
 #include <string>
 
 
-using namepace std;
+using namespace std;
 
 //From class makhluk
+	
+		void Makhluk::PrintPos() const {
+			P.Print();
+		}
+
 		void Makhluk::SetID(int id){
 			this->id=id;
 
@@ -15,28 +20,37 @@ using namepace std;
 			this->kekuatan=kekuatan;
 		}
 		void Makhluk::SetPoint(int x, int y){
-			Makhluk::Point::SetXY(x,y);
+			this->P.SetXY(x,y);
 		}
+
+		void Makhluk::SetKarakter(char karakter){
+			this->karakter=karakter;
+		}
+
 		int Makhluk::GetID() const {
-			return Makhluk::id;
+			return id;
 		}
 		int Makhluk::GetKekuatan() const {
-			return Makhluk::kekuatan;
+			return kekuatan;
 		}
 		Point Makhluk::GetPoint() const{
-			return Makhluk::P;
+			return P;
+		}
+
+		char Makhluk::GetKarakter() const {
+			return karakter;
 		}
 
 
 
 //From Class Hewan
 
-		int GetLangkah() const{} {
-			return Hewan::langkah;
+		int Hewan::GetLangkah() const {
+			return langkah;
 		}
 
-		void SetLangkah(int langkah){
-			return Hewan::Langkah;
+		void Hewan::SetLangkah(int langkah){
+			this->langkah = langkah;
 		}
 
 //From Class Ayam

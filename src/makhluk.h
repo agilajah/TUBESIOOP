@@ -5,21 +5,27 @@
 
 using namespace std;
 
-class Makhluk{
+class Makhluk : Point {
 	public:
 		explicit 
-			Makhluk(int x, int y, int id=0, int kekuatan=0, char karakter=''):
-				Point(x,y), id(id), kekuatan(kekuatan), karakter(karakter){} 
+			Makhluk(int x, int y,char karakter, int id=0, int kekuatan=0):
+				id(id), kekuatan(kekuatan), karakter(karakter){
+					SetPoint(x, y);
+				};
 		
 		virtual void gerak()=0; //pure virtual, this class can't be instantiated
 
+		void PrintPos() const;
 		//getter-setter
-		void SetID(int id){};
-		void SetKekuatan(int kekuatan){};
-		void SetPoint(int x, int y){};
-		int GetID() const {};
-		int GetKekuatan() const {};
-		Point GetPoint() const{};
+		void SetID(int);
+		void SetKekuatan(int kekuatan);
+		void SetPoint(int x, int y);
+		void SetKarakter(char);
+		int GetID() const;
+		int GetKekuatan() const;
+		Point GetPoint() const;
+		char GetKarakter() const;
+
 		
 
 	private:
@@ -34,55 +40,59 @@ class Makhluk{
 class Hewan : public Makhluk{ //Descendant from mahluk
 	public:
 		explicit
-			Hewan(int x, int y, char karakter):
-				langkah(langkah), Makhluk(x, y, karakter), {};
+			Hewan(int x, int y, int langkah, char karakter):
+				langkah(langkah), Makhluk(x, y, karakter) {};
 
 		virtual void gerak()=0;		//pure virtual, this class can't be instantiated, too (?)
 
 
 		//Getter-Setter
-		void SetLangkah(int langkah){};
-		int GetLangkah() const{};
+		void SetLangkah(int langkah);
+		int GetLangkah() const;
 
 	private:
 		int langkah; // atau jarak pandang.
-		virtual const char* bicara =0;	//opsional
+		virtual const char* bicara() =0;	//opsional
 };
 
 class Ayam : public Hewan {		//Descendant from hewan
 	//lahir langsung harus menghasilkan koordinat
+	
+	const char c = 'A'; 
 	public:
 		explicit
-			Ayam(int langkah, int x, int y): Hewan(x, y, langkah, 'A') {};
+			Ayam(int langkah, int x, int y): Hewan(x, y, langkah, c) {};
 
 		void gerak();
 		virtual const char* bicara() {return "Ptok Ptok";}
 
-}
+};
 
 class Elang : public Hewan { 	//Descendant from Hewan
 	//lahir harus langsung punya koordinat
+	const char c = 'E';
 	public :
 		explicit
-			Elang(int langkah, int x, int y): Hewan(x, y, langkah, 'E'){};
+			Elang(int langkah, int x, int y): Hewan(x, y, langkah, c){};
 
 		void gerak();
 		virtual const char* bicara() {return "Eaaak";}
-}
+};
 
-class Cacing : public Cacing {
+class Cacing : public Hewan {
+	char c = 'C';
 	public :
 		explicit
-			Cacing(int langkah, int x, int y): Hewan(x, y, langkah, 'C'){};
+			Cacing(int langkah, int x, int y): Hewan(x, y, langkah, c){};
 
 		void gerak();
 		virtual const char* bicara() {return "I can't speak, baka baka!.";}
-}
+};
 
 class Tumbuhan : public Makhluk{
 	public :
-		explicit
-			Cacing(int langkah, int x, int y): Hewan(x, y, langkah, 'P'){};
+		//explicit
+			//Tumbuhan(int langkah, int x, int y): Hewan(x, y, langkah, 'P'){};
 
 		virtual const char* bicara() {return "I can't speak, baka baka!.";}
 	

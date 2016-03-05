@@ -17,8 +17,13 @@ Board::Board() {
 //Displaying current state of Board
 void Board::Display() {
 	//do something useful here
+
 }
 
 void Board::MovePoint() {
+
+}
+
+void Board::AlgoGerak(int jangkauan) {
 
 }

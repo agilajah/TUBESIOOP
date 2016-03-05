@@ -12,7 +12,7 @@ class Board{
 
 	private:
 		static int mtr[100][100];
-		const MAX = 100; //banyak makhluk maksimal dalam board
+		const int MAX = 100; //banyak makhluk maksimal dalam board
 
 };
 
