@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Makhluk : Point {
+class Makhluk {
 	public:
 		explicit 
 			Makhluk(int x, int y,char karakter, int id=0, int kekuatan=0):
@@ -14,7 +14,6 @@ class Makhluk : Point {
 				};
 		
 		virtual void gerak()=0; //pure virtual, this class can't be instantiated
-
 		void PrintPos() const;
 		//getter-setter
 		void SetID(int);
@@ -23,12 +22,14 @@ class Makhluk : Point {
 		void SetKarakter(char);
 		int GetID() const;
 		int GetKekuatan() const;
+		int getX();
+		int getY();
 		Point GetPoint() const;
 		char GetKarakter() const;
 
 		
 
-	private:
+	protected:
 		int id; 				//id makhluk 	
 		int kekuatan;
 		Point P; 				//posisi makhluk (opsional), bisa pakai x,y langsung
@@ -40,8 +41,8 @@ class Makhluk : Point {
 class Hewan : public Makhluk{ //Descendant from mahluk
 	public:
 		explicit
-			Hewan(int x, int y, int langkah, char karakter):
-				langkah(langkah), Makhluk(x, y, karakter) {};
+			Hewan(int x, int y, int ID, char karakter):
+				langkah(ID), Makhluk(x, y, karakter, ID) {};
 
 		virtual void gerak()=0;		//pure virtual, this class can't be instantiated, too (?)
 
@@ -52,51 +53,51 @@ class Hewan : public Makhluk{ //Descendant from mahluk
 
 	private:
 		int langkah; // atau jarak pandang.
-		virtual const char* bicara() =0;	//opsional
+		
 };
 
 class Ayam : public Hewan {		//Descendant from hewan
-	//lahir langsung harus menghasilkan koordinat
-	
-	const char c = 'A'; 
 	public:
 		explicit
-			Ayam(int langkah, int x, int y): Hewan(x, y, langkah, c) {};
+			Ayam(int ID, int x, int y):
+				Hewan(x, y, ID, 'A')
+				{};
 
 		void gerak();
-		virtual const char* bicara() {return "Ptok Ptok";}
-
+		
 };
 
 class Elang : public Hewan { 	//Descendant from Hewan
 	//lahir harus langsung punya koordinat
-	const char c = 'E';
+	// karakter elang adalah E
 	public :
 		explicit
-			Elang(int langkah, int x, int y): Hewan(x, y, langkah, c){};
+			Elang(int langkah, int x, int y): 
+				i(0),
+				Hewan(x, y, langkah, 'E'),
+				up(false), down(false), right(false), left(false){};
 
 		void gerak();
-		virtual const char* bicara() {return "Eaaak";}
+		
+	private:
+		int i;
+		bool up, down, right, left;
 };
 
 class Cacing : public Hewan {
-	char c = 'C';
+	// karakter cacing adalah 'C'
 	public :
 		explicit
-			Cacing(int langkah, int x, int y): Hewan(x, y, langkah, c){};
+			Cacing(int langkah, int x, int y):
+				i(0),
+				Hewan(x, y, langkah, 'C'),
+				up(false), down(false), right(false), left(false){};
 
 		void gerak();
-		virtual const char* bicara() {return "I can't speak, baka baka!.";}
+		
+	private:
+		int i;
+		bool up, down, right, left;
 };
-
-class Tumbuhan : public Makhluk{
-	public :
-		//explicit
-			//Tumbuhan(int langkah, int x, int y): Hewan(x, y, langkah, 'P'){};
-
-		virtual const char* bicara() {return "I can't speak, baka baka!.";}
-	
-};
-
 
 #endif

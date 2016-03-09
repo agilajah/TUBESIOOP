@@ -9,18 +9,18 @@
 #include <iostream>
 using namespace std;
 
+
 template<class Type>
 Node<Type>::Node(Type x){
-        cout<<"ctor node"<<endl;
+        cout<<"--ctor node"<<endl;
         info = x;
         this->next = NULL;
 }
 
 template<class Type>
 Node<Type>::~Node(){
-        //cout<<"dtor node"<<endl;
-        info = 0;
-        //delete next;
+        cout<<"--dtor node"<<endl;
+        delete next;
 }
 
 template<class Type>
@@ -51,31 +51,34 @@ List<Type>::List(){
 
 template<class Type>
 List<Type>::~List(){
-        //cout<<"dtor list"<<endl;
-        //delete first;
+        cout<<"dtor list"<<endl;
+		
+        delete first;
 }
 
 template<class Type>
-void List<Type>::insert(Type x){
-        Node<Type>* pNode;
-
+void List<Type>::push_back(Type x){
+		Node<Type>* pNodeIns = new Node<Type>(x);
+		
         if (first==NULL){
-                first = new Node<Type>(x);
+                first = pNodeIns;
         }else{
+				Node<Type>* pNode;
                 pNode = first;
                 while(pNode->next!=NULL){
                         pNode = pNode->next;
                 }
-                pNode->next = new Node<Type>(x);
+                pNode->next = pNodeIns;
         }
 }
 
 template<class Type>
-void List<Type>::remove(Type x){
+void List<Type>::erase(Type x){
         Node<Type>* pNodeRem = search(x);
 
         if(pNodeRem!=NULL){
                 if (pNodeRem==first){
+						//cout<<"hapus elemen pertama"<<endl;
                         first = first->next;
                 }else{
                         Node<Type>* pNode = first;
@@ -84,7 +87,7 @@ void List<Type>::remove(Type x){
                         }
                         pNode->next = pNode->next->next;
                 }
-                delete pNodeRem;		//ini ga tau gimana sintaksnya
+                //delete pNodeRem;		//bener ga sih kaya gini delet nya?
         }
 }
 
@@ -98,7 +101,8 @@ Node<Type>* List<Type>::search(Type x){
                 if (pNode->info==x) found=true;
                 else pNode = pNode->next;
         }
-
+		//if(found) cout<<x<<" ditemukan"<<endl;
+        //else cout<<x<<" tidak ditemukan"<<endl;
         return pNode;
 }
 

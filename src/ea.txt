@@ -1,0 +1,57 @@
+[H[2J                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+Confict5vs47 at54,29
+Confict5vs47 at53,29
+54-29
+ID :-1vs-1
+53-29
+ID :5vs47
+ID :1 position 130+38
+ID :2 position 116+17
+ID :3 position 85+15
+ID :4 position 105+36
+ID :5 position 53+29
+ID :6 position 76+16
+ID :7 position 121+5
+ID :8 position 115+11
+ID :9 position 119+25
+ID :10 position 53+28
+ID :11 position 127+4
+ID :12 position 75+5
+ID :13 position 35+9
+ID :14 position 109+9
+ID :15 position 87+32
+ID :16 position 134+34
+ID :17 position 145+7
+ID :18 position 33+14
+ID :19 position 45+0
+ID :20 position 121+21
+ID :21 position 75+36
+ID :22 position 49+5
+ID :23 position 78+23
+ID :24 position 37+5
+ID :25 position 126+1
+ID :26 position 49+9
+ID :27 position 132+30
+ID :28 position 101+0
+ID :29 position 106+21
+ID :30 position 118+29
+ID :31 position 40+23
+ID :32 position 85+34
+ID :33 position 29+27
+ID :34 position 123+0
+ID :35 position 78+5
+ID :36 position 144+18
+ID :37 position 106+16
+ID :38 position 44+24
+ID :39 position 37+21
+ID :40 position 57+5
+ID :41 position 13+15
+ID :42 position 127+8
+ID :43 position 70+17
+ID :44 position 11+24
+ID :45 position 111+2
+ID :46 position 58+10
+ID :47 position 53+29
+ID :48 position 27+3
+ID :49 position 83+32
+ID :50 position 112+37

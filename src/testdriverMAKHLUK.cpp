@@ -13,10 +13,11 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-	Ayam A1(3,3,3); 		//Invoke Ayam A1 with 3,3 position on cartesian coordinates, and 3 for step
+	Ayam A1(3,4,5); 		//Invoke Ayam A1 with 3,3 position on cartesian coordinates, and 3 for step
 	A1.SetID(1023);
 	A1.SetKekuatan(20);
-
+	//int x = A1.GetX();
+	cout << "x = " << A1.getX() << endl;
 	cout << "Invokasi :" << endl;
 	cout << "Ayam di bangkitkan dengan posisi 3,3" << endl;
 	cout << "Ayam memiliki karakter : A" << endl;

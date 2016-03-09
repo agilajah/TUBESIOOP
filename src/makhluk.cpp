@@ -33,6 +33,15 @@ using namespace std;
 		int Makhluk::GetKekuatan() const {
 			return kekuatan;
 		}
+
+		int Makhluk::getX(){
+			return this->P.GetX();
+		}
+
+		int Makhluk::getY(){
+			return this->P.GetY();
+		}
+
 		Point Makhluk::GetPoint() const{
 			return P;
 		}
@@ -40,38 +49,8 @@ using namespace std;
 		char Makhluk::GetKarakter() const {
 			return karakter;
 		}
+//////////////// from kelas hewan
+//////////////// from kelas ayam
+//////////////// from kelas elang
 
-
-
-//From Class Hewan
-
-		int Hewan::GetLangkah() const {
-			return langkah;
-		}
-
-		void Hewan::SetLangkah(int langkah){
-			this->langkah = langkah;
-		}
-
-//From Class Ayam
-		
-		void Ayam::gerak() {
-			//Ayam akan menjauhi elang, mendekati cacing
-			
-
-		}
-
-//From Class Elang
-
-		void Elang::gerak() {
-			//Elang akan bergerak mendekati ayam yang ada dalam jangkauannya, jika ada
-		}
-		
-//From Class Cacing
-
-		void Cacing::gerak() {
-			//Cacing akan bergerak mendekati 
-
-		}
-		
-//From Class Padi
+/////////// from kelas cacing		

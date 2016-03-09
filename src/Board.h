@@ -1,18 +1,45 @@
-#ifndef BOARD_H
-#define BOARD_H
+#include <list>
+#include "Point.h"
+
+
+#ifndef _Board_H
+#define _Board_H
 
 using namespace std;
+
+
+struct mtrk {
+	char element[2];
+	int ID[2];
+	mtrk(char c='0'){
+		element[0]=c;
+		element[1]=c;
+		ID[0]=-1;
+		ID[1]=-1;
+	}
+};
 
 class Board{
 	public:
 		Board(); // constructor
-		void Display(){};
-		void MovePoint(int, int);
-		void AlgoGerak(int){};
+		void Display();
+		void addPosition(int, int);
+		void MovePoint(int, int, int, int, char);
+		bool cekKosong(int, int);
+		void setPoint(int, int, char, int);
+		void clearPoint(int, int, int);
+		void displayConflictList();
+		void validateConflict();
+		bool isConflictArea(int,int);
+		void getFighterID(int,int,int&,int&);
+		void getFighterClass(int,int,char&,char&);
+	
 
+	
 	private:
-		static int mtr[100][100];
-		const int MAX = 100; //banyak makhluk maksimal dalam board
+		list<Point> conflictList;
+		mtrk mtr[150][45];
+		static  const int MAX = 150; //banyak makhluk maksimal dalam board
 
 };
 
