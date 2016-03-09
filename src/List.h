@@ -22,7 +22,7 @@ class Node{
         int getInfo();
         Node<Type>* getNext();
         Node<Type> *next;
-        int info;
+        Type info;
     private:
 };
 

@@ -6,10 +6,17 @@
  */
 
 #include "List.cpp"
+#include "Point.cpp"
 
 int main() {
-    List<int> intList;
-    intList.insert(4);
+    List<Point> listOfPoint;
+    Point P1(1,2);
+    Point P2(2,3);
+    
+    listOfPoint.insert(P1);
+    listOfPoint.insert(P2);
+    
+/*  intList.insert(4);
     intList.insert(5);
     intList.insert(6);
     intList.insert(7);
@@ -27,7 +34,7 @@ int main() {
     charList.insert('t');
     charList.insert('b');
     charList.print();
-    
+*/    
     return 0;
 }
 

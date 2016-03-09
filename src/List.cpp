@@ -11,7 +11,7 @@ using namespace std;
 
 template<class Type>
 Node<Type>::Node(Type x){
-        //cout<<"ctor node"<<endl;
+        cout<<"ctor node"<<endl;
         info = x;
         this->next = NULL;
 }
@@ -45,7 +45,7 @@ Node<Type>* Node<Type>::getNext(){
 
 template<class Type>
 List<Type>::List(){
-        //cout<<"ctor list"<<endl;
+        cout<<"ctor list"<<endl;
         first = NULL;
 }
 
