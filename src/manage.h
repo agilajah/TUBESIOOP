@@ -1,25 +1,27 @@
 #include <list>
 #include "makhluk.h"
 #include "Board.h"
-#include "List.cpp"
-#ifndef MANAGE_H
-#define MANAGE_H
+
+#ifndef Manager_H
+#define Manager_H
 
 
 using namespace std;
 
-class Manage {
+class Manager {
 public:
-	Manage(int x, Board * _board);	
-	void AddMakhluk();
-	void GerakAllMakhluk();
+	Manager(int x, Board * _board);	
+	void spawn();
+	void spawnRandomAmount();
+	void moveAll();
 	void PrintAllMakhluk();
 	void ResolveConflict();
-	void Kill(int);
-	static int nMakhluk;
+	void kill(int);
+	static int nSpawned;
+	static int nLife;
 
 private:
-	List<Makhluk*> ListOfMakhluk;
+	list<Makhluk*> ListOfMakhluk;
 	Board * board;
 };
 

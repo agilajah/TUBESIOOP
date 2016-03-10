@@ -7,77 +7,56 @@ void Cacing::gerak() {
 	int xx, yy;
 	xx = getX();
 	yy = getY();
-	bool cek=true;
+
+	state++;
+
+	if (state == 3 ) {
+		state = 0;
+		//do nothing
+	}
+	else {
 
 	if (!up && !down && !right && !left){
 		up=true;
 		right=true;
 	}
-	while (cek){
-		if (xx>=2 && xx <=74 && yy>=2 && yy<=38){
-			if (up && !down && right && !left){  // move to up and right
-				if (i<1){
-					yy--;				
-				}else if (i>=1 && i<2){
-					xx++;
-				}else if (i==2){
-					yy--;
-					xx++;
-					i=0;
-				}
-			}else if (up && !down && !right && left){ // move to up and left
-				if (i<1){
-					yy--;				
-				}else if (i>=1 && i<2){
-					xx--;
-				}else if (i==2){
-					yy--;
-					xx--;
-					i=0;
-				}
-			}else if (!up && down && right && !left){ // move to down and right
-				if (i<1){
-					yy++;				
-				}else if (i>=1 && i<2){
-					xx++;
-				}else if (i==2){
-					yy++;
-					xx++;
-					i=0;
-				}
-			}else if (!up && down && !right && left){ // move to down and left
-				if (i<1){
-					yy++;				
-				}else if (i>=1 && i<2){
-					xx--;
-				}else if (i==2){
-					yy++;
-					xx--;
-					i=0;
-				}
-			}
-			cek=false;
-			i++;
-
-		}else {
-			if (xx<2){
-				right=true;
-				left=false;
-				xx=2;
-			}else if (xx>74){
-				right=false;
-				left=true;
-				xx=74;
-			}else if (yy<2){
-				up=false;
-				down=true;
-				yy=2;
-			}else if (yy>38){
-				up=true;
-				down=false;
-				yy=38;
-			}
+	
+	if (yy>0 && yy<39){
+		if (up && !down){
+			yy--;
+		}else if (!up && down){
+			yy++;
 		}
-		SetPoint(xx,yy);
+	}else{
+		if (right && !left){
+			xx++;
+		}else if (!right && left){
+			xx--;
+		}
+
+		if (xx>=144){
+			xx=143;
+			right = false;
+			left = true;
+		}else if (xx<=0){
+			xx=1;
+			right = true;
+			left = false;
+		}
+
+		if (up && !down){
+			yy=1;
+			up = false;
+			down = true;
+		}else if (!up && down){
+			yy=38;
+			up = true;
+			down = false	;
+		}
 	}
+	SetPoint(xx,yy);
+
 }
+
+}
+

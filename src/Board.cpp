@@ -1,8 +1,5 @@
 #include "Board.h"
-#include <list>
 #include <iostream>
-
-
 
 using namespace std;
 
@@ -28,7 +25,7 @@ void Board::Display(){
      for (int i  = 0 ; i <40 ; i++) {
 		for (int j = 0 ; j<146 ;j++ ){
 			if ( mtr[j][i].element[0] == '0' ) {
-				show.push_back(' ');
+				show.push_back('-');
 			}
 			else {
 				show.push_back(mtr[j][i].element[0]);
@@ -77,8 +74,7 @@ void Board::setPoint(int x, int y, char kar, int ID){
 			mtr[x][y].element[1]=kar;
 			mtr[x][y].ID[1]=ID;
 
-			Point conflictCoordinate(x,y);
-			conflictList.push_back(conflictCoordinate);
+		
 			}
 	}
 }
@@ -95,37 +91,6 @@ void Board::clearPoint(int x, int y, int ID){
 }
 
 
-void Board::validateConflict(){
-	int x,y;
-	list<Point>::iterator ci = conflictList.begin();
-	while (ci != conflictList.end() ){
-		x = ci->GetX();
-		y = ci->GetY();
-		if (( mtr[x][y].ID[0]  == -1) || ( mtr[x][y].ID[1] == -1)) {
-			conflictList.erase(ci++);	
-		}
-		else {
-			++ci;
-		}
-
-
-	}
-	
-
-}
-
-
-void Board::displayConflictList() {
-	int x,y;
-	validateConflict();
-	for (list<Point>::const_iterator ci = conflictList.begin() ; ci != conflictList.end() ; ++ci) {
-		x = ci->GetX();
-		y = ci->GetY();
-		cout << x << "-" << y <<endl;
-		cout << "ID :" << mtr[x][y].ID[0] << "vs" << mtr[x][y].ID[1] << endl;
-	}
-}
-
 
 bool Board::isConflictArea(int x, int y) {
 	return ((mtr[x][y].ID[0] != -1) && (mtr[x][y].ID[1] != -1));
@@ -139,4 +104,8 @@ void Board::getFighterID(int x, int y, int& ID1, int& ID2){
 void Board::getFighterClass(int x, int y, char& ID1, char& ID2){
 	ID1 = mtr[x][y].element[0];
 	ID2 = mtr[x][y].element[1];
+}
+
+char Board::getKarakter(int x, int y){
+	return mtr[x][y].element[0];
 }

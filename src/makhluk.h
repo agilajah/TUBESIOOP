@@ -8,7 +8,7 @@ using namespace std;
 class Makhluk {
 	public:
 		explicit 
-			Makhluk(int x, int y,char karakter, int id=0, int kekuatan=0):
+			Makhluk(int x, int y,char karakter, int id, int kekuatan=0):
 				id(id), kekuatan(kekuatan), karakter(karakter){
 					SetPoint(x, y);
 				};
@@ -27,11 +27,9 @@ class Makhluk {
 		Point GetPoint() const;
 		char GetKarakter() const;
 
-		
-
-	protected:
+	private:
 		int id; 				//id makhluk 	
-		int kekuatan;
+		int kekuatan;			
 		Point P; 				//posisi makhluk (opsional), bisa pakai x,y langsung
 		char karakter; 			//name, there is no way to access this private data member 
 								//'cause we don't have any setter-getter for this variable
@@ -41,30 +39,24 @@ class Makhluk {
 class Hewan : public Makhluk{ //Descendant from mahluk
 	public:
 		explicit
-			Hewan(int x, int y, int ID, char karakter):
-				langkah(ID), Makhluk(x, y, karakter, ID) {};
+			Hewan(int x, int y, char karakter, int id):
+				Makhluk(x, y, karakter, id) {};
 
 		virtual void gerak()=0;		//pure virtual, this class can't be instantiated, too (?)
 
-
-		//Getter-Setter
-		void SetLangkah(int langkah);
-		int GetLangkah() const;
-
-	private:
-		int langkah; // atau jarak pandang.
-		
 };
 
 class Ayam : public Hewan {		//Descendant from hewan
+	//lahir langsung harus menghasilkan koordinat
+	// Karakter Ayam adalah A
 	public:
 		explicit
-			Ayam(int ID, int x, int y):
-				Hewan(x, y, ID, 'A')
-				{};
+			Ayam(int id, int x, int y):
+				Hewan(x, y, 'A', id), delay(0) {};
 
 		void gerak();
-		
+	private:
+		int delay;
 };
 
 class Elang : public Hewan { 	//Descendant from Hewan
@@ -72,32 +64,58 @@ class Elang : public Hewan { 	//Descendant from Hewan
 	// karakter elang adalah E
 	public :
 		explicit
-			Elang(int langkah, int x, int y): 
-				i(0),
-				Hewan(x, y, langkah, 'E'),
-				up(false), down(false), right(false), left(false){};
+			Elang(int id, int x, int y):
+
+				Hewan(x, y, 'E', id){
+					getArahRandom();
+				};
 
 		void gerak();
-		
 	private:
-		int i;
-		bool up, down, right, left;
+		int arah;
+		void getArahRandom();
+		bool isCollision(int x, int y);
+		bool isSameDirection(int);
 };
 
 class Cacing : public Hewan {
 	// karakter cacing adalah 'C'
 	public :
 		explicit
-			Cacing(int langkah, int x, int y):
-				i(0),
-				Hewan(x, y, langkah, 'C'),
+			Cacing(int id, int x, int y):
+				Hewan(x, y, 'C', id),
 				up(false), down(false), right(false), left(false){};
 
 		void gerak();
-		
+		bool isDirectionsNotInitialized();
+		bool isYHitTheWall(int);
+	
 	private:
-		int i;
 		bool up, down, right, left;
+};
+
+class Tumbuhan : public Makhluk{
+	public :
+		explicit
+			Tumbuhan(int id, int x, int y, char karakter): Makhluk(x, y, karakter, id) {
+
+			};
+	
+		virtual void gerak()=0;	
+	protected :
+		int growTime;
+
+};
+
+class Rumput : public Tumbuhan{
+	public :
+		explicit
+			Rumput(int id, int x, int y): Tumbuhan(id, x,y,'R') ,age(0)  {
+				growTime= 500;
+			};
+		void gerak();
+	private :
+		int age;
 };
 
 #endif

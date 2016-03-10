@@ -5,85 +5,47 @@ using namespace std;
 
 
 void Elang::gerak() {
-	int xx, yy;
-	xx = getX();
-	yy = getY();
-	bool cek=true;
-
-	if (!up && !down && !right && !left){
-		up=true;
-		right=true;
+	srand(rand() % 100);
+	int arah;
+	int oldx = getX();
+	int oldy = getY();
+	int x = oldx;
+	int y = oldy;
+	bool isValidMove = false;
+	
+	while (!isValidMove) {
+	arah = (rand() % 8) + 1;
+	switch(arah) {
+		case 1 : x--;
+				 y++;
+				 break;
+		case 2 : y++;
+				 break;
+		case 3 : x++;
+				 y++;
+				 break;
+		case 4 : x++;
+				 break;
+		case 5 : x++;
+				 y--;
+				 break;
+		case 6:	 y--;
+				 break;
+		case 7 : y--;
+				 x--;
+				 break;
+		case 8 : x--;
+				 break;
 	}
-	while (cek){
-		if (xx>=2 && xx <=73 && yy>=2 && yy<=37){ // ukuran layar 40 x 76
-			if (up && !down && right && !left){  // move to up and right
-				if (i<7){
-					yy--;				
-				}else if (i>=7 && i<15){
-					xx++;
-				}else if (i==15){
-					yy--;
-					xx++;
-					i=0;
-				}
-				yy--;
-			}else if (up && !down && !right && left){ // move to up and left
-				if (i<7){
-					yy--;				
-				}else if (i>=7 && i<15){
-					xx--;
-				}else if (i==15){
-					yy--;
-					xx--;
-					i=0;
-				}
-			}else if (!up && down && right && !left){ // move to down and right
-				if (i<7){
-					yy++;				
-				}else if (i>=7 && i<15){
-					xx++;
-				}else if (i==15){
-					yy++;
-					xx++;
-					i=0;
-				}
-				yy++;
-				xx++;
-			}else if (!up && down && !right && left){ // move to down and left
-				if (i<7){
-					yy++;				
-				}else if (i>=7 && i<15){
-					xx--;
-				}else if (i==15){
-					yy++;
-					xx--;
-					i=0;
-				}
-				yy++;
-				xx--;
-			}
-			cek=false;
-			i++;
 
-		}else {
-			if (xx<2){ 
-				right=true;
-				left=false;
-				xx++;
-			}else if (xx>73){
-				right=false;
-				left=true;
-				xx--;
-			}else if (yy<2){
-				up=false;
-				down=true;
-				yy++;
-			}else if (yy>37){
-				up=true;
-				down=false;
-				yy--;
-			}
+		if (x>=146 || x <0 || y>=40 || y <0 ){
+			x = oldx;
+			y = oldy;
+			
 		}
-		SetPoint(xx,yy);
+		else {
+			isValidMove = true;
+		}
 	}
+		SetPoint(x,y);
 }

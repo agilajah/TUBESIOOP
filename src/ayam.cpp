@@ -8,7 +8,14 @@
 using namespace std;
 
 void Ayam::gerak() {
-	srand(rand() % 100);
+	delay++;
+
+	if ( delay != 4) {
+		//do nothing
+	}
+	else {
+		delay = 0;
+		srand(rand() % 100);
 	int arah;
 	int oldx = getX();
 	int oldy = getY();
@@ -51,4 +58,7 @@ void Ayam::gerak() {
 		}
 	}
 		SetPoint(x,y);
+
+	}
+	
 }

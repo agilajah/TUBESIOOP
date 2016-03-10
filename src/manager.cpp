@@ -10,15 +10,15 @@
 using namespace std;
 
 
-int Manager::nSpawned = 0;
-int Manager::nLife = 0;
-
 Manager::Manager(int x, Board * _board): board() {
 	board = _board;
 	srand(time(NULL));
+	nSpawned = 0;
+	nLife = 0;
 	for ( int i = 1 ; i<= x ; i++) {
 		spawn();
 	}
+	
 
 	
 }
@@ -41,11 +41,11 @@ void Manager::spawn(){
 
 		typeClass = (rand() % 4) + 1;
 		switch (typeClass) {
-			case 1 	:	t = new Ayam(id,x,y);
+			case 1 	:	t = new Elang(id,x,y);
 						break;
-			case 2	:	t = new Cacing(id,x,y);
+			case 2	:	t = new Ayam(id,x,y);
 						break;
-			case 3	:	t = new Elang(id,x,y);
+			case 3	:	t = new Cacing(id,x,y);
 						break;
 			case 4 	:	t = new Rumput(id,x,y);
 						break;
@@ -83,22 +83,21 @@ void Manager::moveAll(){
 			(*ci)->SetPoint(oldX,oldY);
 		}
 			
-		
-
+	
 	}
-	ResolveConflict();
+	resolveConflict();
 }
 
 
 
-void Manager::PrintAllMakhluk(){
+void Manager::displayListOfMakhluk(){
 	for (list<Makhluk *>::const_iterator ci = ListOfMakhluk.begin() ; ci != ListOfMakhluk.end() ; ++ci) {		
 		cout << "ID :" << (*ci)->GetID() << " position " << (*ci)->getX() <<"+" << (*ci)->getY() << endl;
 	}
 	
 }
 
-void Manager::ResolveConflict(){
+void Manager::resolveConflict(){
 	int y,x;
 	int ID1,ID2;
 	char C1,C2;
@@ -125,7 +124,7 @@ void Manager::ResolveConflict(){
 		}
 	}
 
-	if (nLife < 50) {
+	if (nLife < 30) {
 		spawnRandomAmount();	
 	}
 
@@ -133,14 +132,14 @@ void Manager::ResolveConflict(){
 
 
 
-void Manager::kill(int _ID){
+void Manager::kill(int ID){
 	bool done = false;
-	int ID;
+	int IDtarget;
 
 	list<Makhluk*>::iterator ci = ListOfMakhluk.begin();
 	while ((ci != ListOfMakhluk.end()) && (!done)) {
-		ID = (*ci)->GetID();
-		if ( ID == _ID) {
+		IDtarget = (*ci)->GetID();
+		if ( IDtarget == ID) {
 			ListOfMakhluk.erase(ci++);	
 			done == true;
 		}

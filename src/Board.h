@@ -28,8 +28,8 @@ class Board{
 		bool cekKosong(int, int);
 		void setPoint(int, int, char, int);
 		void clearPoint(int, int, int);
-		void displayConflictList();
-		void validateConflict();
+		
+		char getKarakter(int,int);
 		bool isConflictArea(int,int);
 		void getFighterID(int,int,int&,int&);
 		void getFighterClass(int,int,char&,char&);
@@ -37,7 +37,6 @@ class Board{
 
 	
 	private:
-		list<Point> conflictList;
 		mtrk mtr[150][45];
 		static  const int MAX = 150; //banyak makhluk maksimal dalam board
 
