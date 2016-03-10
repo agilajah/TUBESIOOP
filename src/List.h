@@ -24,6 +24,8 @@ class Node{
         Node<Type>* getNext();
         Node<Type> *next;
         Type info;
+        //Node<Type> operator++();            //postfix increment
+        void operator++();  	      		//prefix increment
     private:
 };
 
@@ -35,9 +37,14 @@ class List{
         void push_back(Type);
         void erase(Type);
         Node<Type>* search(Type);
-        void print();
-        Node<Type>* first;
+		Node<Type>* begin();
+		Node<Type>* end();
+		void print();
+		typedef Node<Type>* iterator; 
+		
+		
     private:
+		Node<Type>* first;
 };
 
 #endif /* LIST_H */

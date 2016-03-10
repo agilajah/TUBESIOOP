@@ -4,15 +4,42 @@
  *
  * Created on March 3, 2016, 10:26 AM
  */
-
+ 
 #include "List.cpp"
 #include "makhluk.h"
 #include "Point.h"
 
 int main() {
 
+	List<Point> listOfPoint;
+	Point P1(1,2);
+	listOfPoint.push_back(P1);
+	P1.Print();
+	
+	List<Point>::iterator ip;
+	ip = listOfPoint.begin();
+	(ip->info).Print();
+	
+/*
     List<int> listOfInteger;
-    listOfInteger.insert(1);
+    listOfInteger.push_back(100);
+    listOfInteger.push_back(300);
+    listOfInteger.push_back(500);
+    listOfInteger.push_back(700);
+
+    Node<int>* pNode;
+    pNode = listOfInteger.begin();
+    
+    cout<<"pNode = listOfInteger.end(); = "<<pNode->info<<endl;
+    pNode = listOfInteger.end();
+    cout<<"pNode = listOfInteger.end(); = "<<pNode->info<<endl;
+    
+    List<int>::iterator ci;
+    ci = listOfInteger.begin();
+
+	cout<<ci->info<<endl;
+*/
+
 /*
     List<Point> listOfPoint;
     Point P1(1,2);
@@ -55,8 +82,8 @@ int main() {
     charList.insert('b');
     charList.print();
 */  
-	cout<<"A K H I R"<<endl;
-	cout<<endl;
+	//cout<<"A K H I R "<<endl;
+	//cout<<endl;
     return 0;
 }
 

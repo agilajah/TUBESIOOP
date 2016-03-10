@@ -12,14 +12,14 @@ using namespace std;
 
 template<class Type>
 Node<Type>::Node(Type x){
-        cout<<"--ctor node"<<endl;
+        //cout<<"--ctor node"<<endl;
         info = x;
         this->next = NULL;
 }
 
 template<class Type>
 Node<Type>::~Node(){
-        cout<<"--dtor node"<<endl;
+        //cout<<"--dtor node"<<endl;
         delete next;
 }
 
@@ -43,15 +43,24 @@ Node<Type>* Node<Type>::getNext(){
         return next;
 }
 
+
+template<class Type>
+void Node<Type>::operator++(){
+    //this=this->next;    
+}
+
+
+//////// IMPLEMENTASI KELAS LIST /////////
+
 template<class Type>
 List<Type>::List(){
-        cout<<"ctor list"<<endl;
+        //cout<<"ctor list"<<endl;
         first = NULL;
 }
 
 template<class Type>
 List<Type>::~List(){
-        cout<<"dtor list"<<endl;
+        //cout<<"dtor list"<<endl;
 		
         delete first;
 }
@@ -96,7 +105,7 @@ Node<Type>* List<Type>::search(Type x){
         Node<Type>* pNode;
         bool found=false;
 
-        pNode = first;
+        pNode = begin();
         while(pNode!=NULL && !found){
                 if (pNode->info==x) found=true;
                 else pNode = pNode->next;
@@ -110,7 +119,7 @@ template<class Type>
 void List<Type>::print(){
         Type tmp;
         Node<Type>* pNode;
-        pNode = first;
+        pNode = begin();
 
         while(pNode!=NULL){
                 tmp = pNode->info;
@@ -120,3 +129,20 @@ void List<Type>::print(){
         }
         cout<<endl;
 }
+
+template<class Type>
+Node<Type>* List<Type>::begin(){
+	return this->first;
+}
+
+template<class Type>
+Node<Type>* List<Type>::end(){
+	Node<Type>* pNode;
+	pNode=this->first;
+	while(pNode->next!=NULL){
+		pNode=pNode->next;
+	}
+	return pNode;
+}
+
+
