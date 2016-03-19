@@ -89,14 +89,13 @@ int main(){
 	b.Display();
 
 	
-	while(i<520){
-		std::system("clear");
-		//ayam
+	while(i<550){
 		xa = A1.getX();
 		ya = A1.getY();
 		A1.gerak();
 		xx = A1.getX();
 		yy = A1.getY();
+		b.clearPoint(xa,ya,A1.GetID());
 		b.setPoint(xx, yy, A1.GetKarakter(), A1.GetID());
 		
 		
@@ -105,6 +104,7 @@ int main(){
 		A2.gerak();
 		xx = A2.getX();
 		yy = A2.getY();
+		b.clearPoint(xa,ya,A2.GetID());
 		b.setPoint(xx, yy, A2.GetKarakter(), A2.GetID());
 		
 		
@@ -113,6 +113,7 @@ int main(){
 		A3.gerak();
 		xx = A3.getX();
 		yy = A3.getY();
+		b.clearPoint(xa,ya,A3.GetID());
 		b.setPoint(xx, yy, A3.GetKarakter(), A3.GetID());
 		
 
@@ -121,6 +122,7 @@ int main(){
 		E1.gerak();
 		xx = E1.getX();
 		yy = E1.getY();
+		b.clearPoint(xa,ya,E1.GetID());
 		b.setPoint(xx, yy, E1.GetKarakter(), E1.GetID());
 		
 
@@ -129,6 +131,7 @@ int main(){
 		E2.gerak();
 		xx = E2.getX();
 		yy = E2.getY();
+		b.clearPoint(xa,ya,E2.GetID());
 		b.setPoint(xx, yy, E2.GetKarakter(), E2.GetID());
 		
 
@@ -137,6 +140,7 @@ int main(){
 		E3.gerak();
 		xx = E3.getX();
 		yy = E3.getY();
+		b.clearPoint(xa,ya,E3.GetID());
 		b.setPoint(xx, yy, E3.GetKarakter(), E3.GetID());
 		
 
@@ -145,6 +149,7 @@ int main(){
 		C1.gerak();
 		xx = C1.getX();
 		yy = C1.getY();
+		b.clearPoint(xa,ya,C1.GetID());
 		b.setPoint(xx, yy, C1.GetKarakter(), C1.GetID());
 		
 
@@ -153,6 +158,7 @@ int main(){
 		C2.gerak();
 		xx = C2.getX();
 		yy = C2.getY();
+		b.clearPoint(xa,ya,C2.GetID());
 		b.setPoint(xx, yy, C2.GetKarakter(), C2.GetID());
 		
 
@@ -161,13 +167,14 @@ int main(){
 		C3.gerak();
 		xx = C3.getX();
 		yy = C3.getY();
+		b.clearPoint(xa,ya,C3.GetID());
 		b.setPoint(xx, yy, C3.GetKarakter(), C3.GetID());
 		
 
 		b.Display();
 		i++;
 		cout << i << endl;
-		for(long long j=0; j<30000000 ; j++);
+		for(long long j=0; j<20000000 ; j++);
 	}
 	return 0;
 }

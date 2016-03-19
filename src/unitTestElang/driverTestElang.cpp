@@ -90,8 +90,6 @@ int main(){
 
 	
 	while(i<100000){
-		std::system("clear");
-		//ayam
 		xa = A1.getX();
 		ya = A1.getY();
 		A1.gerak();
