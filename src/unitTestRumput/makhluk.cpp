@@ -56,14 +56,10 @@ char Makhluk::GetKarakter() const {
 //////////////// from kelas ayam
 void Ayam::gerak() {
 	int xx, yy;
-
-	delay++;
-
-	if (delay == 3) {
-	delay = 0;
+	
 	xx = getX();
 	yy = getY();
-	srand(rand() % 1000);
+	srand(rand() % 10000);
 	int random = rand() % 8;
 	switch(random){
 		case 1 : xx++;
@@ -98,12 +94,7 @@ void Ayam::gerak() {
 		yy=38;
 	else if (yy < 0)
 		yy=1;
-	SetPoint(xx,yy);
-
-	}
-	else {
-		//do nothing
-	}	
+	SetPoint(xx,yy);	
 }
 
 //////////////// from kelas cacing

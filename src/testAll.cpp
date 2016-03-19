@@ -10,31 +10,49 @@ int main(){
 
 	int i=0;
 	int xx,yy,xa,ya;
-	Ayam A1(3,4,5);
-	A1.SetID(1023);
+	int jum=50;
+	Board b;
+	
+	Ayam A1(1,4,5);
+	//A1.SetID(1023);
 	A1.SetKekuatan(20);
 
-	Ayam A2(3,23,15);
-	A2.SetID(1023);
+	Ayam A2(2,23,15);
+	//A2.SetID(1023);
 	A2.SetKekuatan(20);
 
-	Ayam A3(3,34,25);
-	A3.SetID(1023);
+	Ayam A3(3,3,25);
+	//A3.SetID(1023);
 	A3.SetKekuatan(20);
 
-	Elang E1(212,24,21);
-	E1.SetID(213);
+	/////////////////////////// 
+	Ayam E1(4, 24,21);
+	//E1.SetID(213);
 	E1.SetKekuatan(999);
 
-	Elang E2(212,2,21);
-	E2.SetID(213);
+	Ayam E2(5,2,21);
+	//E2.SetID(213);
 	E2.SetKekuatan(999);
-
-	Elang E3(212,3,4);
-	E3.SetID(213);
+	
+	Ayam E3(6,3,4);
+	//E3.SetID(213);
 	E3.SetKekuatan(999);
 
-	Board b;
+	////////////////////////
+	Ayam C1(7,34,15);
+	//C1.SetID(103);
+	C1.SetKekuatan(20);
+
+	Ayam C2(8,113,5);
+	//C2.SetID(1023);
+	C2.SetKekuatan(21);
+
+	Ayam C3(9,142,23);
+	//C3.SetID(1023);
+	C3.SetKekuatan(21);
+
+//================== setting to board
+	//ayam
 	xx = A1.getX();
 	yy = A1.getY();
 	b.setPoint(xx, yy, A1.GetKarakter());
@@ -59,11 +77,22 @@ int main(){
 	yy = E3.getY();
 	b.setPoint(xx, yy, E3.GetKarakter());
 
+	xx = C1.getX();
+	yy = C1.getY();
+	b.setPoint(xx, yy, C1.GetKarakter());
+
+	xx = C2.getX();
+	yy = C2.getY();
+	b.setPoint(xx, yy, C2.GetKarakter());
+
+	xx = C3.getX();
+	yy = C3.getY();
+	b.setPoint(xx, yy, C3.GetKarakter());
 	b.Display();
 
 	
-	while(i<100){
-		system("cls");
+	while(i<100000){
+		std::system("clear");
 		//ayam
 		xa = A1.getX();
 		ya = A1.getY();
@@ -72,7 +101,7 @@ int main(){
 		yy = A1.getY();
 		b.setPoint(xx, yy, A1.GetKarakter());
 		b.clearPoint(xa,ya,A1.GetKarakter());
-
+		
 		xa = A2.getX();
 		ya = A2.getY();
 		A2.gerak();
@@ -80,7 +109,7 @@ int main(){
 		yy = A2.getY();
 		b.setPoint(xx, yy, A2.GetKarakter());
 		b.clearPoint(xa,ya,A2.GetKarakter());
-
+		
 		xa = A3.getX();
 		ya = A3.getY();
 		A3.gerak();
@@ -89,7 +118,6 @@ int main(){
 		b.setPoint(xx, yy, A3.GetKarakter());
 		b.clearPoint(xa,ya,A3.GetKarakter());
 
-		//elang
 		xa = E1.getX();
 		ya = E1.getY();
 		E1.gerak();
@@ -114,9 +142,33 @@ int main(){
 		b.setPoint(xx, yy, E3.GetKarakter());
 		b.clearPoint(xa,ya,E3.GetKarakter());
 
+		xa = C1.getX();
+		ya = C1.getY();
+		C1.gerak();
+		xx = C1.getX();
+		yy = C1.getY();
+		b.setPoint(xx, yy, C1.GetKarakter());
+		b.clearPoint(xa,ya,C1.GetKarakter());
+
+		xa = C2.getX();
+		ya = C2.getY();
+		C2.gerak();
+		xx = C2.getX();
+		yy = C2.getY();
+		b.setPoint(xx, yy, C2.GetKarakter());
+		b.clearPoint(xa,ya,C2.GetKarakter());
+
+		xa = C3.getX();
+		ya = C3.getY();
+		C3.gerak();
+		xx = C3.getX();
+		yy = C3.getY();
+		b.setPoint(xx, yy, C3.GetKarakter());
+		b.clearPoint(xa,ya,C3.GetKarakter());
+
 		b.Display();
 		i++;
-		cout << i << endl;
-		Sleep(600);
+		//cout << i << endl;
+		for(long long j=0; j<40000000 ; j++);
 	}
 }
