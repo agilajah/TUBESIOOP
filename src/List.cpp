@@ -53,20 +53,20 @@ void Node<Type>::operator++(){
 //////// IMPLEMENTASI KELAS LIST /////////
 
 template<class Type>
-List<Type>::List(){
+list<Type>::list(){
         //cout<<"ctor list"<<endl;
         first = NULL;
 }
 
 template<class Type>
-List<Type>::~List(){
+list<Type>::~list(){
         //cout<<"dtor list"<<endl;
 		
         delete first;
 }
 
 template<class Type>
-void List<Type>::push_back(Type x){
+void list<Type>::push_back(Type x){
 		Node<Type>* pNodeIns = new Node<Type>(x);
 		
         if (first==NULL){
@@ -82,7 +82,7 @@ void List<Type>::push_back(Type x){
 }
 
 template<class Type>
-void List<Type>::erase(Type x){
+void list<Type>::erase(Type x){
         Node<Type>* pNodeRem = search(x);
 
         if(pNodeRem!=NULL){
@@ -101,7 +101,7 @@ void List<Type>::erase(Type x){
 }
 
 template<class Type>
-Node<Type>* List<Type>::search(Type x){
+Node<Type>* list<Type>::search(Type x){
         Node<Type>* pNode;
         bool found=false;
 
@@ -116,7 +116,7 @@ Node<Type>* List<Type>::search(Type x){
 }
 
 template<class Type>
-void List<Type>::print(){
+void list<Type>::print(){
         Type tmp;
         Node<Type>* pNode;
         pNode = begin();
@@ -131,12 +131,12 @@ void List<Type>::print(){
 }
 
 template<class Type>
-Node<Type>* List<Type>::begin(){
+Node<Type>* list<Type>::begin(){
 	return this->first;
 }
 
 template<class Type>
-Node<Type>* List<Type>::end(){
+Node<Type>* list<Type>::end(){
 	Node<Type>* pNode;
 	pNode=this->first;
 	while(pNode->next!=NULL){

@@ -30,17 +30,17 @@ class Node{
 };
 
 template <class Type>
-class List{
+class list{
     public:
-        List<Type>();
-        ~List<Type>();
+        list<Type>();
+        ~list<Type>();
         void push_back(Type);
         void erase(Type);
         Node<Type>* search(Type);
 		Node<Type>* begin();
 		Node<Type>* end();
 		void print();
-		typedef Node<Type>* iterator; 
+		typedef Node<Type>* iterator;
 		
 		
     private:

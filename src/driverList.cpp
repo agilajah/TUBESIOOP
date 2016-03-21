@@ -6,21 +6,37 @@
  */
  
 #include "List.cpp"
+//#include <list>
 #include "makhluk.h"
 #include "Point.h"
+#include <stdlib.h>
 
 int main() {
+    Makhluk * t;
+    list<Makhluk*> ListOfMakhluk;
+    int id = 0;
+    int x = rand(); 
+    int y = rand(); 
+    
+    t = new Elang(++id,x,y);
+    
+    ListOfMakhluk.push_back(t);
+    
+    list<Makhluk*>:: iterator ci;
 
-	List<Point> listOfPoint;
+    //board->setPoint(x,y, t->GetKarakter(), id);
+
+/*
+	list<Point> listOfPoint;
 	Point P1(1,2);
 	listOfPoint.push_back(P1);
 	P1.Print();
 	
-	List<Point>::iterator ip;
+	list<Point>::iterator ip;
 	ip = listOfPoint.begin();
 	(ip->info).Print();
 	
-/*
+
     List<int> listOfInteger;
     listOfInteger.push_back(100);
     listOfInteger.push_back(300);
