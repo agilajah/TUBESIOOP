@@ -3,16 +3,16 @@
 
 class Point{
 	public:
-		Point(int x=0, int y =0);
+		Point(int x=0, int y =0);		
 		int GetX() const;
-		void SetX(int);
 		int GetY() const;
+		void SetX(int);
 		void SetY(int);
 		void SetXY(int, int);
 		void Print() const;
-		
 	private:
-		int x, y; //posisi
+		int x;	//Absis
+		int y;	//Ordinat
 };
 
 

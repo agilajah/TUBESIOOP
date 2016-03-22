@@ -35,42 +35,22 @@ void Board::Display(){
 	cout << show << endl;
 }
 
-bool Board::cekKosong(int x, int y){
+bool Board::isCoordinateAvailable(int x, int y){
 	// melakukan pengecekan apakah element 1 atau 2 ada yang kosong atau tidak
 	if (mtr[x][y].element[0]=='0' || mtr[x][y].element[1]=='0') return true;
 	else return false;
 }
 
-void Board::MovePoint(int xAwal, int xAkhir, int yAwal, int yAkhir, char kar) {
-	// prekondisi : titik di point akhir, di elemen 0 atau 1 harus ada yang kosong.
-	// jika element di point akhir full maka jangan gunakan fungsi ini.
-	// untuk melakukan pengecekan kosong atau tidak dapat menggunakan fungsi boolean cekKosong
-	if (mtr[xAwal][yAwal].element[0] == kar){
-		mtr[xAwal][yAwal].element[0] = '0';
-		if (mtr[xAkhir][yAkhir].element[0]=='0')
-			mtr[xAkhir][yAkhir].element[0] = kar;
-		else
-			mtr[xAkhir][yAkhir].element[1] = kar;
-	}else if (mtr[xAwal][yAwal].element[1] == kar){
-		mtr[xAwal][yAwal].element[1] = '0';
-		if (mtr[xAkhir][yAkhir].element[0]=='0')
-			mtr[xAkhir][yAkhir].element[0] = kar;
-		else
-			mtr[xAkhir][yAkhir].element[1] = kar;
-	}
-}
 
 void Board::setPoint(int x, int y, char kar, int ID){
-	if (cekKosong(x,y)){
+	if (isCoordinateAvailable(x,y)){
 		if (mtr[x][y].element[0]=='0'){
 			mtr[x][y].element[0]=kar;
 			mtr[x][y].ID[0]= ID;
 
 		}else if (mtr[x][y].element[1]=='0'){
 			mtr[x][y].element[1]=kar;
-			mtr[x][y].ID[1]=ID;
-
-		
+			mtr[x][y].ID[1]=ID;		
 			}
 	}
 }
@@ -85,7 +65,6 @@ void Board::clearPoint(int x, int y, int ID){
 	}
 
 }
-
 
 
 bool Board::isConflictArea(int x, int y) {
@@ -107,10 +86,9 @@ char Board::getKarakter(int x, int y){
 }
 
 void Board::getAvailableCoordinate(int& x, int& y) {
-	bool isCoordinateAvailable = false;
-	while ( !isCoordinateAvailable ) {
+	do {
 		 x = (rand() % 146) ;
 		 y = (rand() % 39) ;
-		if (cekKosong(x,y)) isCoordinateAvailable = true;
 	}
+	while (!isCoordinateAvailable(x,y));
 }

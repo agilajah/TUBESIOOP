@@ -12,9 +12,10 @@
 #define P1_LOST 0
 #define P2_LOST 1
 #define NO_CONFLICT 2
-
 using namespace std;
 
+//Konstruktor manager
+//Menerima parameter board yang ingin dikendalikan
 Manager::Manager(int x, Board * _board): board() {
 	board = _board;
 	srand(time(NULL));
@@ -103,7 +104,7 @@ void Manager::moveOneThread(Makhluk ** t, bool& isLiving){
 		getCoordinate(*t,newX,newY);
 
 		//Kasus jika koordinat tujuan thread dapat ditempati
-		if (board->cekKosong(newX,newY)) {
+		if (board->isCoordinateAvailable(newX,newY)) {
 
 				//Pindah lokasi
 				board->clearPoint(oldX,oldY,(*t)->GetID());
@@ -133,6 +134,8 @@ void Manager::threadRoutine(int id) {
 	Makhluk * t;
 	createNew(&t,id);
 
+	//Selama thread masih hidup, tunggu sinyal dari CV
+	//Bergerak setelah mendapatkan sinyal
 	while (isLiving) {
 		while ( (!ready) ) cv.wait(lck);
 		moveOneThread(&t,isLiving);		
@@ -141,7 +144,7 @@ void Manager::threadRoutine(int id) {
 }
 
 
-//Memunculkan sebuah thread baru
+//Memunculkan sebuah thread baru, masukkan ke list of thread
 void Manager::spawn(){
 	nSpawned++;
 	nLife++;
@@ -149,7 +152,7 @@ void Manager::spawn(){
 }
 
 
-//Memunculkan beberapa thread secara acak
+//Memunculkan sejumlah acak thread
 void Manager::spawnRandomAmount(){
 	int amount = ( rand() % 50 ) + 1;
 	for (int i = 1 ; i<amount ; i++) spawn(); 
@@ -161,13 +164,13 @@ void Manager::moveAll(){
 	std::unique_lock<std::mutex> lck(mtx);
 	ready = true;
 	cv.notify_all();
-	resolveConflict();
+	populationControl();
 }
 
 
 //Kontrol populasi
 //Memastikan bahwa thread muncul otomatis jika populasi menurun
-void Manager::resolveConflict(){
+void Manager::populationControl(){
 	int y,x;
 	int ID1,ID2;
 	char C1,C2;

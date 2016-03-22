@@ -54,9 +54,7 @@ using namespace std;
 //////////////// from kelas hewan
 
 //////////////// from kelas ayam
-
-
-
+		
 void Ayam::gerak() {
 	int xx, yy;
 

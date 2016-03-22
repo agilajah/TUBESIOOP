@@ -7,45 +7,23 @@
 #include <iostream>
 #include <thread>
 #include <termios.h>
-#define NB_ENABLE 1
-#define NB_DISABLE 0
-
 using namespace std;
-
-
-
-
-
 
 Board board;
 Manager worldManager(100,&board);
 Viewer view(&board);
 bool stop,paused,stepByStep = false;
 
-void nonblock(int state)
+void nonblock()
 {
     struct termios ttystate;
- 
-    //get the terminal sstate
     tcgetattr(STDIN_FILENO, &ttystate);
- 
-    if (state==NB_ENABLE)
-    {
-        //turn off canonical mode
-        ttystate.c_lflag &= ~ICANON;
-        //minimum of number input read.
-        ttystate.c_cc[VMIN] = 1;
-    }
-    else if (state==NB_DISABLE)
-    {
-        //turn on canonical mode
-        ttystate.c_lflag |= ICANON;
-    }
-    //set the terminal attributes.
+    ttystate.c_lflag &= ~ICANON;
+    ttystate.c_cc[VMIN] = 1;
     tcsetattr(STDIN_FILENO, TCSANOW, &ttystate);
  }
 
-void  loop() {
+void loop() {
         while (!stop) {
             if (!paused) {
                 view.displayToScreen();
@@ -61,8 +39,8 @@ void  loop() {
 
 int main() {
     char cc;
-    nonblock(NB_ENABLE);
 
+    nonblock();
     thread t(loop);	
     do {
         cc = getchar();
@@ -85,9 +63,6 @@ int main() {
                             break;
         }
     } while (!stop);
-
     cout << endl<< "Program exited.." << endl;
-        
 	return 0;
 }
-
