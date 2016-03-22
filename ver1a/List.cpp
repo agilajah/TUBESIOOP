@@ -9,17 +9,17 @@
 #include <iostream>
 using namespace std;
 
+//-------------------------------- IMPLEMENTASI KELAS NODE -------------------------------//
+////////////////////////////////////////////////////////////////////////////////////////////
 
 template<class Type>
 Node<Type>::Node(Type x){
-        //cout<<"--ctor node"<<endl;
         info = x;
         this->next = NULL;
 }
 
 template<class Type>
 Node<Type>::~Node(){
-        //cout<<"--dtor node"<<endl;
         delete next;
 }
 
@@ -42,20 +42,18 @@ template<class Type>
 Node<Type>* Node<Type>::getNext(){
         return next;
 }
+////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//////// IMPLEMENTASI KELAS LIST /////////
-
+////////////////////////////////////////////////////////////////////////////////////////////
+//-------------------------------- IMPLEMENTASI KELAS LIST -------------------------------//
 template<class Type>
 list<Type>::list(){
-        //cout<<"ctor list"<<endl;
         first = NULL;
 }
 
 template<class Type>
 list<Type>::~list(){
-        //cout<<"dtor list"<<endl;
-		
         delete first;
 }
 
@@ -90,12 +88,11 @@ void list<Type>::erase(Type x){
                         }
                         pNode->next = pNode->next->next;
                 }
-                //delete pNodeRem;		//bener ga sih kaya gini delet nya?
         }
 }
 
 template<class Type>
-Node<Type>* list<Type>::search(Type x){
+Node<Type>* list<Type>::search(Type x) {
         Node<Type>* pNode;
         bool found=false;
 
@@ -104,8 +101,6 @@ Node<Type>* list<Type>::search(Type x){
                 if (pNode->info==x) found=true;
                 else pNode = pNode->next;
         }
-		//if(found) cout<<x<<" ditemukan"<<endl;
-        //else cout<<x<<" tidak ditemukan"<<endl;
         return pNode;
 }
 
@@ -113,8 +108,8 @@ template<class Type>
 void list<Type>::print(){
         Type tmp;
         Node<Type>* pNode;
-        pNode = begin();
 
+        pNode = begin();
         while(pNode!=NULL){
                 tmp = pNode->info;
                 cout<<tmp;
@@ -139,4 +134,7 @@ Node<Type>* list<Type>::end(){
 	return pNode;
 }
 
-
+template<class Type>
+int list<Type>::isEmpty(){
+	return first==NULL;
+}

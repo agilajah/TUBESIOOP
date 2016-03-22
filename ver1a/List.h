@@ -13,17 +13,17 @@ template<class Type>
 class Node{
     public:
         //ctor, cctor, dtor
-        Node<Type>();
-        Node<Type>(Type);
-        ~Node<Type>();
+        Node<Type>();				// konstruktor node generik
+        Node<Type>(Type);			// copy constuctor node generik
+        ~Node<Type>();				// destruktor node generik
 
         //setter getter
-        void setInfo(Type);
-        void setNext(Node&);
-        int getInfo();
-        Node<Type>* getNext();
-        Node<Type> *next;
-        Type info;
+        void setInfo(Type);			// mengeset nilai info node generik
+        void setNext(Node&);		// mengeset nilai next dari node generik
+        int getInfo();				// mengembalikan nilai info dari node generik
+        Node<Type>* getNext();		// meengembalikan nilai next dari node generik
+        Node<Type> *next;			// atribut untuk menyimpan alamat next node
+        Type info;					// atribut untuk menyimpan info node generik
     private:
 };
 
@@ -31,20 +31,21 @@ template <class Type>
 class list{
     public:
     	//ctor, cctor, dtor
-        list<Type>();
-        ~list<Type>();
+        list<Type>();					// konstruktor list generik
+        ~list<Type>();					// destruktor list generik
 
         //service
-        void push_back(Type);
-        void erase(Type);
-        Node<Type>* search(Type);
-		Node<Type>* begin();
-		Node<Type>* end();
-		void print();					//untuk debugging
-		typedef Node<Type>* iterator;	
+        void push_back(Type);			// menambahkan anggota baru dari list, anggota baru ditambah sebagai elemen terakhir	
+        void erase(Type);				// menghapus suatu anggota list
+        Node<Type>* search(Type);		// mencari suatu anggota list, jika ditemukan dikembalikan alamat node, jika tidak dikembalikan NULL
+		Node<Type>* begin();			// mengembalikan anggota pertama (first) dari list
+		Node<Type>* end();				// mengembalikan angota terakhir dari lisst
+		int isEmpty();
+		void print();					// mencetak seluruh anggota list, dapat digunakan untuk unit test dan debuging
+		typedef Node<Type>* iterator;	// digunakan sebagai iterator untuk anggota list
 		
     private:
-		Node<Type>* first;
+		Node<Type>* first;				// menyimpan alamat node pertama dari list
 };
 
 #endif /* LIST_H */
