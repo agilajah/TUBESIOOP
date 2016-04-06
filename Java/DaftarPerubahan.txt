@@ -1,8 +1,0 @@
-Makhluk:
-  konstruktor makhluk ada dua yaitu:
-    Makhluk(int id, int x, int y, char karakter, int kekuatan);
-    dan
-    Makhluk(int id, int x, int y, char karakter);                 //kekuatan akan di set menjadi 0
-    
-  bagi kelas yang memakai makhluk harap menyesuaian karena sebelumnya terdapat ketidak konsistenan dalam urutan parameter konstruktor
-  cmiiw
