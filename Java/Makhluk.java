@@ -63,5 +63,5 @@ public abstract class Makhluk{
 		P.Print();
 	}
 	
-	public abstract void gerak();
+	public void gerak(){}
 }
