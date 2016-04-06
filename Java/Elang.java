@@ -7,29 +7,29 @@ class Elang extends Hewan { 	//Descendant from Hewan
 	//lahir harus langsung punya koordinat
 	// karakter elang adalah E
 	Elang(int id, int x, int y) {
-			super(x, y, 'E', id);
+			super(id, x, y, 'E');
 			timer = 0;
 			getArahRandom();
-			Random rand;
+			Random rand = new Random();
 			// nextInt is normally exclusive of the top value,
 			// so add 1 to make it inclusive
-			min = 1; 
-			max = 3;
+			int min = 1; 
+			int max = 3;
 			delay = rand.nextInt((max - min) + 1) + min;
 	}
 	
 	
 	private void getArahRandom() {
-			min = 1;
-			max = 8;
-			Random rand;
+			int min = 1;
+			int max = 8;
+			Random rand = new Random();
 			arah = rand.nextInt((max - min) +1) + min;
 	}
 	
 	
-	private bool isCollision(int x, int y) {
+	private boolean isCollision(int x, int y) {
 			// return true is coordinate is on boundaries defined
-			if (xx>0 && xx<145 && yy>0 && yy<39){
+			if (x>0 && x<145 && y>0 && y<39){
 				return false;
 			}else {
 				return true;
@@ -37,7 +37,7 @@ class Elang extends Hewan { 	//Descendant from Hewan
 	}
 	
 	
-	private bool isSameDirection(int) {
+	private boolean isSameDirection(int temp) {
 			//return true if the direction is same
 			//korelasi arah :
 			//// dinding kanan 	: 1, 5, 6
@@ -96,17 +96,16 @@ class Elang extends Hewan { 	//Descendant from Hewan
 						else if (yy <= 0)
 							yy=1;
 						int temp = arah;
-						bool cek = true;
-						min = 1;
-						max = 8;
-						Random rand;
+						boolean cek = true;
+						int min = 1;
+						int max = 8;
+						Random rand = new Random();
 						arah = rand.nextInt((max - min) + 1) + min;
 					
 						while(cek){
 							if (isSameDirection(temp)){
 								min = 1;
 								max = 8;
-								Random rand;
 								arah = rand.nextInt((max - min) + 1) + min;
 							}else{
 								cek = false;

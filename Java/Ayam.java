@@ -7,13 +7,13 @@ class Ayam extends Hewan {		//Descendant from hewan
 	//lahir langsung harus menghasilkan koordinat
 	// Karakter Ayam adalah A
 	Ayam(int id, int x, int y) {
-		super(x, y, 'A', id);
+		super(id, x, y, 'A');
 		timer = 0;
-		Random rand;
+		Random rand = new Random();
 		// nextInt is normally exclusive of the top value,
 		// so add 1 to make it inclusive
-		min = 1; 
-		max = 3;
+		int min = 1; 
+		int max = 3;
 		delay = rand.nextInt((max - min) + 1) + min;
 	}
 
@@ -26,9 +26,9 @@ class Ayam extends Hewan {		//Descendant from hewan
 					timer = 0;
 					xx = getX();
 					yy = getY();
-					Random rand;
-					min = 1;
-					max = 8; 
+					Random rand = new Random();
+					int min = 1;
+					int max = 8; 
 					int random = rand.nextInt((max - min) + 1) + min;
 					switch(random){
 							case 1 : xx++;

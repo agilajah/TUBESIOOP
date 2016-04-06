@@ -1,21 +1,20 @@
 class Cacing extends Hewan {
-	private bool up;
-	private bool down;
-	private bool right;
-	private bool left;
+	private boolean up;
+	private boolean down;
+	private boolean right;
+	private boolean left;
 	
 	// karakter cacing adalah 'C'
 	
 	Cacing(int id, int x, int y) {
-		super(x, y, 'C', id);
+		super(id, x, y, 'C');
 		up = false;
 		down = false;
 		right = false;
 		left = false;
 	}
 
-	public void gerak();
-	public bool isDirectionsNotInitialized() {				
+	public boolean isDirectionsNotInitialized() {				
 			// return true if unitialized
 			if (!up && !down && !right && !left)
 				return true;
@@ -23,7 +22,7 @@ class Cacing extends Hewan {
 				return false;
 	}
 
-	public bool isYHitTheWall(int) {
+	public boolean isYHitTheWall(int yy) {
 		//return ture if hit the bottom and upper wall
 		if (yy<=0 || yy>=39) 
 			return true;
@@ -31,7 +30,7 @@ class Cacing extends Hewan {
 			return false;
 	}
 
-	public gerak() {
+	public void gerak() {
 		int xx, yy;
 		xx = getX();
 		yy = getY();
