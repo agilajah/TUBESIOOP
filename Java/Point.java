@@ -9,6 +9,12 @@ public class Point{
 		  y = 0;
 	  }
 
+      public Point(int x, int y){
+	  // Set titik mula-mula ke (0, 0)	
+		  SetAbsis(x);
+		  SetOrdinat(y);
+	  }
+
       // Getter
       public int GetX(){
 		  return x;

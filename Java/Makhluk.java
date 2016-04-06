@@ -6,6 +6,7 @@ public abstract class Makhluk{
 	
 	Makhluk(int id, int x, int y, char karakter, int kekuatan){
 		SetID(id);
+		P = new Point(x,y);
 		SetPoint(x,y);
 		SetKarakter(karakter);
 		SetKekuatan(kekuatan);
