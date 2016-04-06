@@ -1,7 +1,8 @@
 
 /**
- *
- * @author Ghifari
+ * <h1> Point </h1>
+ * Kelas point digunakan sebagai adt point koordinat makhluk hidup
+ * @author Farhan Ghifari / 13515602
  */
 public class Point {
     /**
@@ -28,7 +29,7 @@ public class Point {
      * @return mengembalikan x
      */
     int GetX(){
-	return x;
+	   return x;
     }
 
     /**
@@ -36,7 +37,7 @@ public class Point {
      * @param x melakukan input ke x
      */
     void SetX(int x){
-	this.x = x;
+	   this.x = x;
     }
 
     /**
@@ -44,7 +45,7 @@ public class Point {
      * @return mengembalikan nilai y
      */
     int GetY(){
-	return y;
+	   return y;
     }
 
     /**
@@ -52,7 +53,7 @@ public class Point {
      * @param y melakukan input ke nilai y
      */
     void SetY(int y) {
-	this.y = y;
+	   this.y = y;
     }
 
     /**
@@ -61,8 +62,8 @@ public class Point {
      * @param y untuk input nilai y
      */
     void SetXY(int x, int y) {
-	this.x = x;
-	this.y = y;
+	   this.x = x;
+	   this.y = y;
     }
 
     /**
