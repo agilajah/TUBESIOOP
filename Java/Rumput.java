@@ -2,7 +2,7 @@ class Rumput extends Tumbuhan{
 	private	int age;
 	
 	Rumput(int id, int x, int y) {
-			super(x, y, 'R', id);
+			super(id, x, y, 'R');
 			age = 0;
 			growTime= 500;
 	}
