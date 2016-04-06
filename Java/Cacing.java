@@ -1,79 +1,111 @@
+
+/**
+ * kelas cacing turunan dari hewan
+ * @author Febi Agil / 13514010
+ */
 class Cacing extends Hewan {
-	private boolean up;
-	private boolean down;
-	private boolean right;
-	private boolean left;
-	
-	// karakter cacing adalah 'C'
-	
-	Cacing(int id, int x, int y) {
-		super(id, x, y, 'C');
-		up = false;
-		down = false;
-		right = false;
-		left = false;
-	}
+    /**
+     * boolean arah atas
+     */
+    private boolean up;
+    /**
+     * boolean arah bawah
+     */
+    private boolean down;
+    /**
+     * boolean arah kanan
+     */
+    private boolean right;
+    /**
+     * boolean arah kiri
+     */
+    private boolean left;
 
-	public boolean isDirectionsNotInitialized() {				
-			// return true if unitialized
-			if (!up && !down && !right && !left)
-				return true;
-			else
-				return false;
-	}
+    /**
+     * Konstruktor cacing
+     * karakter cacing adalah 'C'
+     * @param id parameter input id cacing
+     * @param x parameter input koordinat x cacing
+     * @param y parameter input koordinat y cacing
+     */
+    Cacing(int id, int x, int y) {
+        super(id, x, y, 'C');
+        up = false;
+        down = false;
+        right = false;
+        left = false;
+    }
 
-	public boolean isYHitTheWall(int yy) {
-		//return ture if hit the bottom and upper wall
-		if (yy<=0 || yy>=39) 
-			return true;
-		else
-			return false;
-	}
+    /**
+     * boolean untuk mengecek apakah arah sudah di inisialisasi atau belum
+     * @return return true if unitialized
+     */
+    public boolean isDirectionsNotInitialized() {				
+        if (!up && !down && !right && !left)
+            return true;
+        else
+            return false;
+    }
 
-	public void gerak() {
-		int xx, yy;
-		xx = getX();
-		yy = getY();
+    /**
+     * boolean untuk melakukan checking apakah cacing menabrak dinding atas/bawah atau tidak
+     * @param yy input parameter koordinat y
+     * @return return ture if hit the bottom and upper wall
+     */
+    public boolean isYHitTheWall(int yy) {
+        if (yy<=0 || yy>=39) 
+            return true;
+        else
+            return false;
+    }
 
-		if (isDirectionsNotInitialized()){
-			up=true;
-			right=true;
-		}
-		
-		if (!isYHitTheWall(yy)){
-			if (up && !down){
-				yy--;
-			}else if (!up && down){
-				yy++;
-			}
-		}else{
-			if (right && !left){
-				xx++;
-			}else if (!right && left){
-				xx--;
-			}
+    /**
+     * prosedur untuk mengubah koordinat x dan y cacing
+     * menjadi koordinat baru
+     */
+    public void gerak() {
+        int xx, yy;
+        xx = getX();
+        yy = getY();
 
-			if (xx>=145){
-				xx=144;
-				right = false;
-				left = true;
-			}else if (xx<=0){
-				xx=1;
-				right = true;
-				left = false;
-			}
+        if (isDirectionsNotInitialized()){
+                up=true;
+                right=true;
+        }
 
+        if (!isYHitTheWall(yy)){
+            if (up && !down){
+                yy--;
+            }else if (!up && down){
+                yy++;
+            }
+        }else{
+            if (right && !left){
+                xx++;
+            }else if (!right && left){
+                xx--;
+            }
 
-			if (up && !down){
-				yy++;
-				up = false;
-				down = true;
-			}else if (!up && down){
-				yy--;
-				up = true;
-				down = false;
-			}
-		}
-		SetPoint(xx,yy); //SetPoint is method from its class parent, eh? idk
-	}
+            if (xx>=145){
+                xx=144;
+                right = false;
+                left = true;
+            }else if (xx<=0){
+                xx=1;
+                right = true;
+                left = false;
+            }
+
+            if (up && !down){
+                yy++;
+                up = false;
+                down = true;
+            }else if (!up && down){
+                yy--;
+                up = true;
+                down = false;
+            }
+        }
+        SetPoint(xx,yy); //SetPoint is method from its class parent, eh? idk
+    }
 }

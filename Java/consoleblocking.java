@@ -1,33 +1,47 @@
-/* In java, we can use JCurses :  [curses](http://en.wikipedia.org/wiki/Curses_(programming_library)) 
-library for that authentic 80s look using the JCurses library. */
-
-/* Java does not make the pragmatic exceptions to portability that Python does, so there is no convenient package to 
-switch the console to character mode. Instead we have to run stty from a shell. Otherwise the principle is the same. 
-Much of this code is borrowed from the JLine project. */
 
 import java.io.IOException; 
 import java.io.ByteArrayOutputStream; 
 import java.io.InputStream;
 
+/**
+ * In java, we can use JCurses :  [curses](http://en.wikipedia.org/wiki/Curses_(programming_library))
+ * library for that authentic 80s look using the JCurses library.
+ * Java does not make the pragmatic exceptions to portability that Python does, so there is no convenient package
+ * to switch the console to character mode. Instead we have to run stty from a shell.
+ * Otherwise the principle is the same. Much of this code is borrowed from the JLine project.
+ * @author Febi Agil / 13514010
+ */
 public class NumbersConsole {
 
+    /**
+     * String ttyConfig
+     */
     private static String ttyConfig;
 
-
+    /**
+     * Prosedur untuk setting terminalCBreak
+     * @throws IOException
+     * @throws InterruptedException 
+     */
     private static void setTerminalToCBreak() throws IOException, InterruptedException {
-
         ttyConfig = stty("-g");
-
-        // set the console to be character-buffered instead of line-buffered
+        /**
+         * set the console to be character-buffered instead of line-buffered
+         */
         stty("-icanon min 1");
-
-        // disable character echoing
+        /**
+         * disable character echoing
+         */
         stty("-echo");
     }
 
     /**
      *  Execute the stty command with the specified arguments
      *  against the current active terminal.
+     * @param args
+     * @return
+     * @throws IOException
+     * @throws InterruptedException 
      */
     private static String stty(final String args)
                     throws IOException, InterruptedException {
@@ -67,6 +81,7 @@ public class NumbersConsole {
         String result = new String(bout.toByteArray());
         return result;
     }
+
 
     public static void main(String[] args) {
 

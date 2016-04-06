@@ -1,12 +1,12 @@
-//Setiap include class tinggal pake import, masukkan kelas ke package yang sama. Atau class dan main ini di tempat yang sama biar gausah pake import2an
-
-import.util.*;
-
-
+/**
+ * Setiap include class tinggal pake import, masukkan kelas ke package yang sama.
+ * Atau class dan main ini di tempat yang sama biar gausah pake import2an
+ * @author Febi Agil / 13514010
+ */
 class Main {
 	Board board;
-	Manager worldManager(100, board);
-	Viewer view(board);
+	Manager worldManager = new Manager(100, board);
+	Viewer view = new Viewer(board);
 	boolean stop, paused, stepByStep = false;
 
 	public void nonblock() {
