@@ -1,10 +1,9 @@
-/**
- *
- * @author Adi Purnama / 13514006
- */
-
 import java.lang.Math;
 
+/**
+ * class Board untuk papan permainan
+ * @author Adi Purnama / 13514006
+ */
 public class Board {
 
 	/**
@@ -130,8 +129,7 @@ public class Board {
 
 	/**
      * untuk mendapatkan koordinat yang tersedia (available)
-     * @param x parameter input koordinat x
-     * @param y parameter input koordinat y
+     * @return mengembalikan koordinate yang tersedia
      */	
 	public int[] getAvailableCoordinate(){
 		int temp[] = new int[2];

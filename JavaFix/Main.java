@@ -14,6 +14,12 @@ import java.awt.event.KeyEvent;
 
 public class Main  {
 
+	/**
+	* class main program
+	* @param args input args
+	* @throws IOException 
+	* @throws InterruptedException
+	*/
 	public static void main(String args[]) throws IOException, InterruptedException {
 		Board board = new Board();
 		Manager worldManager = new Manager(100, board);

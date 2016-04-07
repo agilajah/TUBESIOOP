@@ -1,5 +1,5 @@
 /**
- *
+ * Abstract class Tumbuhan
  * @author Amal Qurany / 13514078
  */
 public abstract class Tumbuhan extends Makhluk{

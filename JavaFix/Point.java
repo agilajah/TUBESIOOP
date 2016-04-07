@@ -1,4 +1,3 @@
-
 /**
  * <h1> Point </h1>
  * Kelas point digunakan sebagai adt point koordinat makhluk hidup
