@@ -1,0 +1,132 @@
+Di program kita, kurang lebih ada 1400an 'error' menurut checkstyle. Secara garis besar bisa dibagi menjadi 35 kategori, chart juga bisa
+dilihat digambar :
+
+
+- Checkstyle execution failed due to an internal error. Please check the error log for details.
+
+	Solusi : gabisa dicompile filenya. error. Konstruktornya berantakan. dan inget, di java nama file harus sama kaya nama class.
+			 tolong jangan submit kalau blm lolos compile.
+
+
+-File does not end with a newline
+
+	Solusi : setiap file, enter sekali diakhir
+-Redundant 'X' modifier
+-Conditional logic can be removed
+
+	Solusi : kalau bisa return (x==y), (gausah if (x==y) then return x else y). Intinya simple aja.
+-'X' is a magic number
+
+	Solusi : jangan insert angka tiba-tiba. coba pake konstanta.
+
+-'Parameter 'X' should be final
+
+	Solusi : 
+
+-Using the '*' form of import should be avoided
+
+	Solusi : Jangan import something.*, usahakan tahu lokasi dari package yang diimport. kalau pake * kebanyakan yg diimport
+
+-Line is longer than X character
+
+	Solusi : jangan terlalu melebar di layar, kalau udah panjang banget mending taro di new line
+
+-Missing package-info.java file
+
+	Solusi : masih ga jelas file mana masuk package mana. Tolong kasih package
+
+-'X' construct must use '{}''s
+
+	Solusi :
+
+-'X' is preceded with withspace
+
+	Solusi :
+
+-File contains tab characters (this is the first instance).
+
+	Solusi : 
+
+-'X' at column X should be on the previous line.
+
+	Solusi :
+
+-Unused X for tag 'X'
+
+	Solusi :
+
+-Unused import -X
+
+	Solusi : jangan asal import. lokasi package yang diimport harus presisi
+
+-Array brackets at illegal position
+
+	Solusi : 
+
+-Utility classes should not have a public or default constructor
+
+	Solusi :
+
+-Variable 'X' must be private and have accessor methods.
+
+	Solusi :
+
+-'X' should be on a new line
+
+	Solusi :
+
+-Name 'X' must match pattern 'X'
+
+	Solusi :
+
+-'X' is not preceded with whitespace
+
+	Solusi :
+
+- Method'X' is not designed for extension - needs to be abstract, final or empty
+
+	Solusi :
+
+- RegexpSingleline : Line has trailing spaces
+
+	Solusi :
+
+- 'typecast' is not followed by whitespace
+
+	Solusi :
+
+- Must have at least one statement
+
+	Solusi :
+
+- 'X'hides a field
+
+	Solusi :
+
+- Redundat import from the java.lang package - X
+
+	Solusi : ini sama kaya yang udah dibilang sebelumnya. jangan asal import.
+
+- empty statement
+
+	Solusi :
+
+- 'X is followed by whitespace.
+
+	Solusi :
+
+- 'X' at column X should be on the same line as the next part of multi-block statement (one that directly contains multiple block: if/else-if/else/then)
+
+	Solusi :
+
+- switch without 'default' clause
+
+	Solusi : kalau switch, pake default.
+
+- missing a javadoc document
+
+	Solusi : ga ada javadocnya.
+
+- first sentence should end with a period
+
+	Solusi :
