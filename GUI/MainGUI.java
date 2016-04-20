@@ -1,4 +1,4 @@
-import java.awt.EventQueue;
+    import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 public class MainGUI extends JFrame {
@@ -10,11 +10,9 @@ public class MainGUI extends JFrame {
     
     private void initUI() {
         
-        add(new Manager(100));
-        
+        add(new Manager(10));
         setSize(Settings.BOARD_WIDTH, Settings.BOARD_HEIGHT);
         setResizable(false);
-
         setTitle("Ricefield : Rumble Arena");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

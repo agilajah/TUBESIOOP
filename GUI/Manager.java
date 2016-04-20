@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.ImageIcon;
 import java.awt.Image;
+import java.awt.Rectangle;
 
 
 /**
@@ -42,7 +43,9 @@ public class Manager extends JPanel implements ActionListener{
 
     private Timer timer;
     private Craft craft;
-    private final int DELAY = 10;
+    private int DELAY;
+    private boolean isPlayerDead;
+    private int counter;
     
     
     /**
@@ -57,13 +60,15 @@ public class Manager extends JPanel implements ActionListener{
         for (int i=1;i<=x;i++) {
             spawn();
         }
-
+        spawnRumput();
+        DELAY = 10;
+        counter = 0;
         addKeyListener(new TAdapter());
         setFocusable(true);
+        isPlayerDead = false;
         setBackground(Color.BLACK);
 
         craft = new Craft();
-
         timer = new Timer(DELAY, this);
         timer.start();       
     }
@@ -74,7 +79,6 @@ public class Manager extends JPanel implements ActionListener{
         super.paintComponent(g);
         moveAll();
         doDrawing(g);
-        
         Toolkit.getDefaultToolkit().sync();
     }
 
@@ -82,17 +86,46 @@ public class Manager extends JPanel implements ActionListener{
         
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(craft.getImage(), craft.getX(), craft.getY(), this);  
+        Rectangle player = new Rectangle(craft.getX(), craft.getY(),5,5);
 
         Iterator it  =  ListOfMakhluk.iterator();
 
+
+
         while (it.hasNext()) {
             Makhluk makhluk = (Makhluk) it.next();
+            boolean isEatable = false;
+            if( (makhluk.GetKarakter() == 'R') || (makhluk.GetKarakter() == 'X')){
+                isEatable = true;
+            }
 
             Image image;
             ImageIcon ii = new ImageIcon("ayam.png");
             image = ii.getImage();
             g2d.drawImage(makhluk.getImage(), makhluk.getX(), makhluk.getY(), this); 
+            Rectangle enemy = new Rectangle(makhluk.getX(), makhluk.getY(),10,10);
+            if( enemy.intersects(player)){
+                if(isEatable){
+                    ListOfMakhluk.remove(makhluk);
+                    spawnRumput();
+                    spawnRandomAmount();
+                    counter++;
+                    if (counter == 5){
+                        if ( DELAY >= 2){
+                            DELAY--;
+                            counter = 0;
+                        }
+
+                    }
+                }
+                else {
+                    craft.changeCraft();   
+                    isPlayerDead = true;   
+                }
+            }
         }
+
+
 
     }
 
@@ -106,12 +139,16 @@ public class Manager extends JPanel implements ActionListener{
 
         @Override
         public void keyReleased(KeyEvent e) {
-            craft.keyReleased(e);
+            if( !isPlayerDead){
+                craft.keyReleased(e);
+            }
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-            craft.keyPressed(e);
+            if (!isPlayerDead){
+                craft.keyPressed(e);
+            }
         }
     }
 
@@ -127,7 +164,7 @@ public class Manager extends JPanel implements ActionListener{
         int id,classType;
         int coordinate[];
         boolean isCoordinateAvailable = false;
-            Random rand = new Random();
+        Random rand = new Random();
         Makhluk t;
         t = new Elang(0,0,0);
             
@@ -152,6 +189,32 @@ public class Manager extends JPanel implements ActionListener{
         ListOfMakhluk.add(t);
         board.setPoint(coordinate[0],coordinate[1], t.GetKarakter(), id);
     }
+
+    void spawnRumput(){
+
+        int id,classType;
+        int coordinate[];
+        boolean isCoordinateAvailable = false;
+        Random rand = new Random();
+        Makhluk t;
+        t = new Elang(0,0,0);
+            
+            /// cek apakah berjalan baik disini saat passing parameter
+        coordinate = board.getAvailableCoordinate();
+
+        nSpawned++;
+        nLife++;
+        id = nSpawned;
+
+     
+        t = new Rumput(id,coordinate[0],coordinate[1]);
+                              
+        ListOfMakhluk.add(t);
+        board.setPoint(coordinate[0],coordinate[1], t.GetKarakter(), id);
+
+
+    }
+    
     
     /**
      * spawnRandomAmount adalah prosedur untuk memunculkan makhluk dengan banyaknya random

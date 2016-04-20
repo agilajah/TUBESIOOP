@@ -23,6 +23,12 @@ public class Craft {
         y = 60;        
     }
 
+    public void changeCraft(){
+        ImageIcon ii = new ImageIcon("img4.png");
+        image = ii.getImage();
+
+    }
+
 
     public void move() {
         x += dx;
