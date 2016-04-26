@@ -238,5 +238,13 @@ public class Manager {
 
     }
     
+    /**
+    * Untuk menghitung jumlah element board yang kosong ada berapa
+    * Element dikatakan kosong jika slot satu dan slot dua kosong
+    * @return jumlah slot kosong
+    */
+    public int getCountEmptySlot(){
+        return board.getEmptySlot();
+    }
     
 }
