@@ -150,4 +150,20 @@ public class Board {
  		return temp;
 	}
 
+	/**
+     * Untuk menghitung jumlah element board yang kosong ada berapa
+     * Element dikatakan kosong jika slot satu dan slot dua kosong
+     * @return jumlah slot kosong
+     */
+    public int getEmptySlot(){
+        int count=0;
+        for (int i = 0 ; i<Settings.BOARD_WIDTH ; i++){
+            for (int j = 0 ; j <Settings.BOARD_HEIGHT ; j++){
+                    if(elem[i][j].isSlotOneAvailable() && elem[i][j].isSlotTwoAvailable() ){
+                        count++;
+                    }
+            }
+        }
+        return count;
+    }
 }
