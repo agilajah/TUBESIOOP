@@ -300,6 +300,7 @@ public class Manager extends JPanel implements ActionListener{
 
     }
 
+    
     /**
      * kill adalah prosedur untuk membunuh makhluk dengan id = ID
      * @param ID adalah parameter untuk membuat makhluk yang memiliki id = ID terbunuh
