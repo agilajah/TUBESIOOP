@@ -36,7 +36,7 @@ public class Board {
 			return 0;
 		}
 		else {
-		return elem[x][y].isAvailable();
+			return elem[x][y].isAvailable();
 		}
 	}
 
