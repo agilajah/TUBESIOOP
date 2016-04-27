@@ -41,7 +41,7 @@ public abstract class Makhluk {
         setId(id);
         p = new Point(x,y);
         setPoint(x,y);
-        retKarakter(karakter);
+        setKarakter(karakter);
         setKekuatan(kekuatan);
     }
 
@@ -55,7 +55,7 @@ public abstract class Makhluk {
     Makhluk(int id, int x, int y, char karakter) {
         setId(id);
         setPoint(x,y);
-        retKarakter(karakter);
+        setKarakter(karakter);
         setKekuatan(0);
     }
 
@@ -80,7 +80,7 @@ public abstract class Makhluk {
      * .prosedur untuk set karakter
      * @param karakter input parameter karakter
      */
-    public void retKarakter(char karakter) {
+    public void setKarakter(char karakter) {
         this.karakter = karakter;
     }
     
