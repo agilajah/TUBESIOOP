@@ -3,27 +3,59 @@ import javax.swing.ImageIcon;
 import java.util.Random;
 
 /**
- * Descendant from hewan
+ * Descendant from hewan.
  * @author Febi Agil / 13514010
  */
 class Ayam extends Hewan {
     /**
-     * variabel delay bertipe int
+     * constant value of one.
+     */
+    private static final int ONE = 1;
+    /**
+     * constant value of two.
+     */
+    private static final int TWO = 2;
+    /**
+     * constant value of three.
+     */
+    private static final int THREE = 3;
+    /**
+     * constant value of four.
+     */
+    private static final int FOUR = 4;
+    /**
+     * constant value of five.
+     */
+    private static final int FIVE = 5;
+    /**
+     * constant value of six.
+     */
+    private static final int SIX = 6;
+    /**
+     * constant value of seven.
+     */
+    private static final int SEVEN = 7;
+    /**
+     * constant value of eight.
+     */
+    private static final int EIGHT = 8;
+    /**
+     * variabel delay bertipe int.
      */
     private int delay;
     /**
-     * variabel timer bertipe int
+     * variabel timer bertipe int.
      */
     private int timer;
 
     /**
-     * lahir langsung harus menghasilkan koordinat
+     * lahir langsung harus menghasilkan koordinat.
      * Karakter Ayam adalah A
      * @param id parameter input id ayam
      * @param x parameter input koordinat x ayam
      * @param y parameter input koordinat y ayam
      */
-    Ayam(int id, int x, int y) {
+    Ayam(final int id, final int x, final int y) {
             super(id, x, y, 'A');
             timer = 0;
             Random rand = new Random();
@@ -31,22 +63,20 @@ class Ayam extends Hewan {
              * nextInt is normally exclusive of the top value,
              * so add 1 to make it inclusive
              */
-            int min = 1; 
-            int max = 3;
+            int min = ONE;
+            int max = THREE;
             delay = rand.nextInt((max - min) + 1) + min;
             try {
                 ImageIcon ii = createImageIcon("img1.png");
                 image = ii.getImage();
+            } catch (ImageException e) {
+                System.out.println("Error occured when trying to get "
+                        + "image for Ayam class: " + e.getMessage());
             }
-            catch (ImageException e) {
-                System.out.println("Error occured when trying to get image for Ayam class: " + e.getMessage());
-            }
-
-
     }
 
     /**
-     * prosedur untuk mengubah koordinat x dan y ayam 
+     * * prosedur untuk mengubah koordinat x dan y ayam.
      * menjadi koordinat baru
      */
     public void gerak() {
@@ -58,29 +88,29 @@ class Ayam extends Hewan {
             xx = getX();
             yy = getY();
             Random rand = new Random();
-            int min = 1;
-            int max = 8; 
+            int min = ONE;
+            int max = EIGHT;
             int random = rand.nextInt((max - min) + 1) + min;
-            switch(random) {
-                case 1 : xx++;
+            switch (random) {
+                case ONE : xx++;
                         break;
-                case 2 : yy++;
+                case TWO : yy++;
                         break;
-                case 3 : xx--;
+                case THREE : xx--;
                         break;
-                case 4 : yy--;
+                case FOUR : yy--;
                         break;
-                case 5 : xx++;
+                case FIVE : xx++;
                          yy++;
                         break;
-                case 6 : xx++;
-                                 yy--;
+                case SIX : xx++;
+                        yy--;
                         break;
-                case 7 : xx--;
-                                 yy++;
+                case SEVEN : xx--;
+                        yy++;
                         break;
-                case 8 : xx--;
-                                 yy--;
+                case EIGHT : xx--;
+                        yy--;
                         break;
                 default :
                 		assert false;

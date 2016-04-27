@@ -2,35 +2,35 @@ import javax.swing.ImageIcon;
 
 
 /**
- * kelas cacing turunan dari hewan
+ * kelas cacing turunan dari hewan.
  * @author Febi Agil / 13514010
  */
 class Cacing extends Hewan {
     /**
-     * boolean arah atas
+     * boolean arah atas.
      */
     private boolean up;
     /**
-     * boolean arah bawah
+     * boolean arah bawah.
      */
     private boolean down;
     /**
-     * boolean arah kanan
+     * boolean arah kanan.
      */
     private boolean right;
     /**
-     * boolean arah kiri
+     * boolean arah kiri.
      */
     private boolean left;
 
     /**
-     * Konstruktor cacing
+     * Konstruktor cacing.
      * karakter cacing adalah 'C'
      * @param id parameter input id cacing
      * @param x parameter input koordinat x cacing
      * @param y parameter input koordinat y cacing
      */
-    Cacing(int id, int x, int y) {
+    Cacing(final int id, final int x, final int y) {
         super(id, x, y, 'C');
         up = false;
         down = false;
@@ -39,38 +39,33 @@ class Cacing extends Hewan {
         try {
             ImageIcon ii = createImageIcon("img4.png");
             image = ii.getImage();
-        }
-        catch (ImageException e) {
-            System.out.println("Error occured when trying to get image for Elang class: " + e.getMessage());
+        } catch (ImageException e) {
+            System.out.println("Error occured when trying to "
+                    + "get image for Elang class: " + e.getMessage());
         }
 
     }
 
     /**
-     * boolean untuk mengecek apakah arah sudah di inisialisasi atau belum
+     * boolean untuk mengecek apakah arah sudah di inisialisasi atau belum.
      * @return return true if unitialized
      */
-    public boolean isDirectionsNotInitialized() {				
-        if (!up && !down && !right && !left)
-            return true;
-        else
-            return false;
+    public boolean isDirectionsNotInitialized() {
+        return (!up && !down && !right && !left);
     }
 
     /**
-     * boolean untuk melakukan checking apakah cacing menabrak dinding atas/bawah atau tidak
+     * boolean untuk melakukan checking apakah cacing.
+     * menabrak dinding atas/bawah atau tidak
      * @param yy input parameter koordinat y
      * @return return ture if hit the bottom and upper wall
      */
-    public boolean isYHitTheWall(int yy) {
-        if (yy<=0 || yy>=(Settings.BOARD_HEIGHT -1)) 
-            return true;
-        else
-            return false;
+    public boolean isYHitTheWall(final int yy) {
+        return (yy <= 0 || yy >= (Settings.BOARD_HEIGHT - 1));
     }
 
     /**
-     * prosedur untuk mengubah koordinat x dan y cacing
+     * prosedur untuk mengubah koordinat x dan y cacing.
      * menjadi koordinat baru
      */
     public void gerak() {
@@ -78,44 +73,44 @@ class Cacing extends Hewan {
         xx = getX();
         yy = getY();
 
-        if (isDirectionsNotInitialized()){
-                up=true;
-                right=true;
+        if (isDirectionsNotInitialized()) {
+                up = true;
+                right = true;
         }
 
-        if (!isYHitTheWall(yy)){
-            if (up && !down){
+        if (!isYHitTheWall(yy)) {
+            if (up && !down) {
                 yy--;
-            }else if (!up && down){
+            } else if (!up && down) {
                 yy++;
             }
-        }else{
-            if (right && !left){
+        } else {
+            if (right && !left) {
                 xx++;
-            }else if (!right && left){
+            } else if (!right && left) {
                 xx--;
             }
 
-            if (xx>= (Settings.BOARD_WIDTH - 1) ){
-                xx=(Settings.BOARD_WIDTH - 2);
+            if (xx >= (Settings.BOARD_WIDTH - 1)) {
+                xx = (Settings.BOARD_WIDTH - 2);
                 right = false;
                 left = true;
-            }else if (xx<=0){
-                xx=1;
+            } else if (xx <= 0) {
+                xx = 1;
                 right = true;
                 left = false;
             }
 
-            if (up && !down){
+            if (up && !down) {
                 yy++;
                 up = false;
                 down = true;
-            }else if (!up && down){
+            } else if (!up && down) {
                 yy--;
                 up = true;
                 down = false;
             }
         }
-        setPoint(xx,yy); //SetPoint is method from its class parent, eh? idk
+        setPoint(xx, yy); //SetPoint is method from its class parent, eh? idk
     }
 }
