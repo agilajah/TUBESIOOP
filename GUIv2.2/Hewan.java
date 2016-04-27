@@ -1,10 +1,9 @@
 
-
 /**
  *
  * @author Amal Qurany / 13514078
  */
-public abstract class Hewan extends Makhluk{
+public abstract class Hewan extends Makhluk {
     /**
      * Konstruktor hewan
      * @param id parameter input id hewan
@@ -12,7 +11,7 @@ public abstract class Hewan extends Makhluk{
      * @param y parameter input koordinat y
      * @param karakter parameter input karakter hewan
      */
-    public Hewan(int id, int x, int y, char karakter){
+    public Hewan(int id, int x, int y, char karakter) {
             super(id, x, y, karakter, 0);
     }
     

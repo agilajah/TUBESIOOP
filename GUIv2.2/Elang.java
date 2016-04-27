@@ -19,7 +19,7 @@ class Elang extends Hewan {
      * variabel arah bertipe int
      */
     private int arah;
-    
+
     /**
      * lahir harus langsung punya koordinat
      *  karakter elang adalah E
@@ -27,7 +27,7 @@ class Elang extends Hewan {
      * @param x parameter input koordinat x elang
      * @param y parameter input koordinat y elang
      */
-    Elang(int id, int x, int y) {
+    Elang(final int id, final int x, final int y) {
         super(id, x, y, 'E');
         timer = 0;
         getArahRandom();
@@ -36,8 +36,8 @@ class Elang extends Hewan {
          * nextInt is normally exclusive of the top value,
          * so add 1 to make it inclusive
          */
-        int min = 1; 
-        int max = 3;
+        final int min = 1;
+        final int max = 3;
         delay = rand.nextInt((max - min) + 1) + min;
         delay = 0;
         try {
@@ -45,7 +45,8 @@ class Elang extends Hewan {
             image = ii.getImage();
         }
         catch (ImageException e) {
-            System.out.println("Error occured when trying to get image for Elang class: " + e.getMessage());
+            System.out.println("Error occured when trying to get image for Elang class: "
+                    + e.getMessage());
         }
 
     }
@@ -54,10 +55,10 @@ class Elang extends Hewan {
      * prosedur untuk mendapatkan arah random
      */
     private void getArahRandom() {
-        int min = 1;
-        int max = 8;
+        final int min = 1;
+        final int max = 8;
         Random rand = new Random();
-        arah = rand.nextInt((max - min) +1) + min;
+        arah = rand.nextInt((max - min) + 1) + min;
     }
 
     /**
@@ -66,10 +67,10 @@ class Elang extends Hewan {
      * @param y input parameter koordinat y
      * @return return true is coordinate is on boundaries defined
      */
-    private boolean isCollision(int x, int y) {
-        if (x>0 && x<(Settings.BOARD_WIDTH - 1) && y>0 && y<(Settings.BOARD_HEIGHT - 1)){
+    private boolean isCollision(final int x, final int y) {
+        if(x > 0 && x < (Settings.BOARD_WIDTH - 1) && y > 0 && y < (Settings.BOARD_HEIGHT - 1)) {
                 return false;
-        }else {
+        } else {
                 return true;
         }	
     }
@@ -84,14 +85,16 @@ class Elang extends Hewan {
      * @param temp parameter input arah
      * @return return true if the direction is same
      */
-    private boolean isSameDirection(int temp) {
-        if (((temp==1 || temp==5 || temp==6) && (arah==1 || arah==5 || arah==6)) ||
-                ((temp==3 || temp==7 || temp==8) && (arah==3 || arah==7 || arah==8)) ||
-                ((temp==2 || temp==5 || temp==6) && (arah==2 || arah==5 || arah==6)) ||
-                ((temp==4 || temp==6 || temp==8) && (arah==4 || arah==6 || arah==8)) )
-                return true;
-        else
-                return false;
+    private boolean isSameDirection(final int temp) {
+        if(((temp == 1 || temp == 5 || temp == 6) && (arah == 1 || arah == 5 || arah == 6))
+                    || ((temp == 3 || temp == 7 || temp == 8) && (arah == 3 || arah == 7 || arah == 8))
+                    || ((temp == 2 || temp == 5 || temp == 6) && (arah == 2 || arah == 5 || arah == 6))
+                    || ((temp == 4 || temp == 6 || temp == 8) && (arah == 4 || arah == 6 || arah == 8)))
+        {
+            return true;
+        } else{
+            return false;
+        }
     }
 
     /**

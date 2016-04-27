@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import java.net.URL;
 import java.util.Iterator;
 
 import javax.swing.ImageIcon;
@@ -54,8 +55,18 @@ public class ViewerGUI extends JPanel implements ActionListener {
         isPlayerDead = false;
         points = 0;
     }
-    
 
+    /** Returns an ImageIcon, or throwing exceptions if the path was invalid. */
+    private ImageIcon createImageIcon(String imagename) throws ImageException {
+        String path = "/gambar/" + imagename;
+        //URL imgURL = new URL(path);
+        URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            throw new ImageException("Image not found!");
+        }
+    }
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -71,9 +82,15 @@ public class ViewerGUI extends JPanel implements ActionListener {
 
     private void overDrawing(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        ImageIcon ii = new ImageIcon("gambar/go.png");
-        Image image = ii.getImage();
-        g2d.drawImage(image,Settings.BOARD_WIDTH / 2,Settings.BOARD_HEIGHT / 2,this);
+        try {
+            ImageIcon ii = createImageIcon("go.png");
+            Image image = ii.getImage();
+            g2d.drawImage(image,Settings.BOARD_WIDTH / 2,Settings.BOARD_HEIGHT / 2,this);
+        }
+        catch (ImageException e) {
+            System.out.println("Error occured when trying to get image for ViewGUI class: " + e.getMessage());
+        }
+
     }
 
     private void doDrawing(Graphics g) {
@@ -102,7 +119,7 @@ public class ViewerGUI extends JPanel implements ActionListener {
             }
             
            
-            ImageIcon ii = new ImageIcon("gambar/ayam.png");
+            ImageIcon ii = new ImageIcon("ayam.png");
             Image image = ii.getImage();
            
             g2d.drawImage(makhluk.getImage(), makhluk.getX(), makhluk.getY(), this); 

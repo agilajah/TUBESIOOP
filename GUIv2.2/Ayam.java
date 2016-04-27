@@ -61,7 +61,7 @@ class Ayam extends Hewan {
             int min = 1;
             int max = 8; 
             int random = rand.nextInt((max - min) + 1) + min;
-            switch(random){
+            switch(random) {
                 case 1 : xx++;
                         break;
                 case 2 : yy++;
@@ -87,18 +87,19 @@ class Ayam extends Hewan {
                         break;
             }
 
-            if (xx >= (Settings.BOARD_WIDTH - 1))
-                    xx= (Settings.BOARD_WIDTH -2);
-            else if (xx < 0)
-                    xx=1;
-            if (yy >= (Settings.BOARD_HEIGHT - 1))
-                    yy=(Settings.BOARD_HEIGHT - 2);
-            else if (yy < 0)
-                    yy=1;
-            setPoint(xx,yy);
+            if (xx >= (Settings.BOARD_WIDTH - 1)) {
+                xx = (Settings.BOARD_WIDTH - 2);
+            } else if (xx < 0) {
+                xx = 1;
+            }
+            if (yy >= (Settings.BOARD_HEIGHT - 1)) {
+                yy = (Settings.BOARD_HEIGHT - 2);
+            } else if (yy < 0) {
+                yy = 1;
+            }
 
-        } else {
-            //do nothing
+            setPoint(xx, yy);
+
         }
     }
 }

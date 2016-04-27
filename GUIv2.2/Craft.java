@@ -1,5 +1,6 @@
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.net.URL;
 import javax.swing.ImageIcon;
 
 public class Craft {
@@ -14,18 +15,41 @@ public class Craft {
         
         initCraft();
     }
+
+    /** Returns an ImageIcon, or throwing exceptions if the path was invalid. */
+    public ImageIcon createImageIcon(String imagename) throws ImageException {
+        String path = "/gambar/" + imagename;
+        //URL imgURL = new URL(path);
+        URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            throw new ImageException("Image not found!");
+        }
+    }
     
     private void initCraft() {
-        
-        ImageIcon ii = new ImageIcon("gambar/search.png");
-        image = ii.getImage();
-        x = 40;
-        y = 60;        
+        try {
+            ImageIcon ii = createImageIcon("search.png");
+            image = ii.getImage();
+            x = 40;
+            y = 60;
+        }
+        catch (ImageException e) {
+            System.out.println("Error occured when trying to get image for Craft class: " + e.getMessage());
+        }
+
     }
 
     public void changeCraft(){
-        ImageIcon ii = new ImageIcon("gambar/img4.png");
-        image = ii.getImage();
+        try {
+            ImageIcon ii = createImageIcon("img4.png");
+            image = ii.getImage();
+        }
+        catch (ImageException e) {
+            System.out.println("Error occured when trying to get image for Craft class: " + e.getMessage());
+        }
+
 
     }
 
