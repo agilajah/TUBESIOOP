@@ -1,5 +1,4 @@
-import viewer.*;
-import controller.*;
+import viewer.ViewerGUI;
 import model.Settings;
 
 import java.awt.EventQueue;
