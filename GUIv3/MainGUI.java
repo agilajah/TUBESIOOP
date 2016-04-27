@@ -4,6 +4,9 @@ import model.Settings;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
+/**
+ * class MainGUI
+ */
 public class MainGUI extends JFrame {
 
   public MainGUI() {
