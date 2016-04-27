@@ -1,5 +1,8 @@
 import java.awt.Image;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.swing.ImageIcon;
+
 
 /**.
  * @author Amal Qurany / 13514078
@@ -155,5 +158,17 @@ public abstract class Makhluk {
 
     public void cobaMethod(){
         int x = 0;
+    }
+
+    /** Returns an ImageIcon, or throwing exceptions if the path was invalid. */
+    public ImageIcon createImageIcon(String imagename) throws ImageException {
+        String path = "/gambar/" + imagename;
+        //URL imgURL = new URL(path);
+        URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            throw new ImageException("Image not found!");
+        }
     }
 }

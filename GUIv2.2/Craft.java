@@ -17,14 +17,14 @@ public class Craft {
     
     private void initCraft() {
         
-        ImageIcon ii = new ImageIcon("search.png");
+        ImageIcon ii = new ImageIcon("gambar/search.png");
         image = ii.getImage();
         x = 40;
         y = 60;        
     }
 
     public void changeCraft(){
-        ImageIcon ii = new ImageIcon("img4.png");
+        ImageIcon ii = new ImageIcon("gambar/img4.png");
         image = ii.getImage();
 
     }

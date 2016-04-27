@@ -1,7 +1,5 @@
 import javax.swing.ImageIcon;
 
-import java.awt.Image;
-
 
 /**
  * kelas cacing turunan dari hewan
@@ -38,8 +36,14 @@ class Cacing extends Hewan {
         down = false;
         right = false;
         left = false;
-        ImageIcon ii = new ImageIcon("img4.png");
-        image = ii.getImage();
+        try {
+            ImageIcon ii = createImageIcon("img4.png");
+            image = ii.getImage();
+        }
+        catch (ImageException e) {
+            System.out.println("Error occured when trying to get image for Elang class: " + e.getMessage());
+        }
+
     }
 
     /**

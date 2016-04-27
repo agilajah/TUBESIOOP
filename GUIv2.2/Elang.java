@@ -1,6 +1,5 @@
 import javax.swing.ImageIcon;
 
-import java.awt.Image;
 import java.util.Random;
 
 /**
@@ -41,8 +40,14 @@ class Elang extends Hewan {
         int max = 3;
         delay = rand.nextInt((max - min) + 1) + min;
         delay = 0;
-        ImageIcon ii = new ImageIcon("img3.png");
-        image = ii.getImage();
+        try {
+            ImageIcon ii = createImageIcon("img3.png");
+            image = ii.getImage();
+        }
+        catch (ImageException e) {
+            System.out.println("Error occured when trying to get image for Elang class: " + e.getMessage());
+        }
+
     }
 
     /**

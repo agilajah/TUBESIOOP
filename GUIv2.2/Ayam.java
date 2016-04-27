@@ -1,6 +1,5 @@
 import javax.swing.ImageIcon;
 
-import java.awt.Image;
 import java.util.Random;
 
 /**
@@ -35,9 +34,15 @@ class Ayam extends Hewan {
             int min = 1; 
             int max = 3;
             delay = rand.nextInt((max - min) + 1) + min;
+            try {
+                ImageIcon ii = createImageIcon("img1.png");
+                image = ii.getImage();
+            }
+            catch (ImageException e) {
+                System.out.println("Error occured when trying to get image for Ayam class: " + e.getMessage());
+            }
 
-            ImageIcon ii = new ImageIcon("img1.png");
-            image = ii.getImage();
+
     }
 
     /**

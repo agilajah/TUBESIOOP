@@ -11,10 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -74,7 +71,7 @@ public class ViewerGUI extends JPanel implements ActionListener {
 
     private void overDrawing(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        ImageIcon ii = new ImageIcon("go.png");
+        ImageIcon ii = new ImageIcon("gambar/go.png");
         Image image = ii.getImage();
         g2d.drawImage(image,Settings.BOARD_WIDTH / 2,Settings.BOARD_HEIGHT / 2,this);
     }
@@ -105,7 +102,7 @@ public class ViewerGUI extends JPanel implements ActionListener {
             }
             
            
-            ImageIcon ii = new ImageIcon("ayam.png");
+            ImageIcon ii = new ImageIcon("gambar/ayam.png");
             Image image = ii.getImage();
            
             g2d.drawImage(makhluk.getImage(), makhluk.getX(), makhluk.getY(), this); 

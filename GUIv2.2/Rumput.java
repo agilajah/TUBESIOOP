@@ -1,5 +1,4 @@
 
-import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
@@ -22,8 +21,14 @@ class Rumput extends Tumbuhan {
         super(id, x, y, 'R');
         age = 0;
         growTime = 500;
-        ImageIcon ii = new ImageIcon("img2.png");
-        image = ii.getImage();
+        try {
+            ImageIcon ii = createImageIcon("img2.png");
+            image = ii.getImage();
+        }
+        catch (ImageException e) {
+            System.out.println("Error occured when trying to get image for Rumput class: " + e.getMessage());
+        }
+
     }
 
     /**
@@ -34,8 +39,13 @@ class Rumput extends Tumbuhan {
         age++;
         if ( age > growTime) {
             setKarakter('X');
-            ImageIcon ii = new ImageIcon("oldrmpt.png");
-            image = ii.getImage();
+            try {
+                ImageIcon ii = createImageIcon("oldrmpt.png");
+                image = ii.getImage();
+            }
+            catch(ImageException e) {
+                System.out.println("Error occured when trying to get image for Rumput class: " + e.getMessage());
+            }
         }
     }
 

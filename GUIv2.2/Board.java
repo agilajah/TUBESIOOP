@@ -132,7 +132,7 @@ public class Board {
      * @param x parameter input koordinat x
      * @param y parameter input koordinat y
      */	
-	public int[] getAvailableCoordinate() throws BoardException {
+	public int[] getAvailableCoordinate()  {
 		int temp[] = new int[2];
 
 		do {
@@ -140,9 +140,7 @@ public class Board {
 			temp[1] = (int) Math.floor(Math.random() * (Settings.BOARD_HEIGHT-1));
  		}
  		while (isCoordinateAvailable(temp[0],temp[1]) != 1);
-		if (temp[0]==0 && temp[1]==0) {
-			throw new BoardException("No coordinate available");
-		}
+
  		return temp;
 	}
 
