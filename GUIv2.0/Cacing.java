@@ -111,6 +111,6 @@ class Cacing extends Hewan {
                 down = false;
             }
         }
-        SetPoint(xx,yy); //SetPoint is method from its class parent, eh? idk
+        setPoint(xx,yy); //SetPoint is method from its class parent, eh? idk
     }
 }

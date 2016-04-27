@@ -149,7 +149,7 @@ class Elang extends Hewan {
                     }
                 }
             }
-            SetPoint(xx,yy);
+            setPoint(xx,yy);
         }
     }	
 		

@@ -1,43 +1,45 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import javax.swing.ImageIcon;
-import java.awt.Image;
-import java.awt.Rectangle;
-
 
 /**
- * <h1> Manager </h1>
- * Kelas Manager digunakan untuk mengatur segala aktivitas yang terjadi di papan / Board yang ditampilkan
+ * .<h1> Manager </h1>
+ * Kelas Manager digunakan untuk mengatur segala aktivitas yang 
+ * terjadi di papan / Board yang ditampilkan
  * @author Farhan Ghifari / 13515602
  */
 public class Manager {
     /**
-     * ListOfMakhluk adalah variabel bertipe List<Makhluk>
-     * untuk menyimpan list makhluk
+     * .ListOfMakhluk adalah variabel list generik gertipe makhluk
+     * digunakan untuk menyimpan list makhluk
      */
     static List<Makhluk> ListOfMakhluk = new ArrayList<Makhluk>();
     /**
-     * Board Manager
+     * .Board Manager
      */
     Board board = new Board();
     /**
-    *   Jumlah makhluk yang telah dimunculkan
+    * .Jumlah makhluk yang telah dimunculkan
     */
     int nSpawned;
     /**
-     *  Jumlah makhluk yang masih ada di board
+     *.Jumlah makhluk yang masih ada di board
      */
     int nLife;
 
@@ -51,45 +53,38 @@ public class Manager {
     
     
     /**
-     * 
+     * .konstruktor kelas manager
      * @param x parameter untuk membuat makhluk sebanyak x
-     * @param _board parameter inisialisasi board
      */
-    public Manager(int x){
+    public Manager(int x) {
         nSpawned = 0;
         nLife = 0;
         counter = 0;
 
-        for (int i=1;i<=x;i++) {
+        for (int i = 1; i <= x;i++) {
             spawn();
         }
         spawnRumput();   
     }
     
-
-
-
-
-
-
     /**
-     * spawn adalah prosedur untuk memunculkan satu makhluk
+     * .spawn adalah prosedur untuk memunculkan satu makhluk
      */
-    void spawn(){
-        int id,classType;
-        int coordinate[];
+    void spawn() {
         boolean isCoordinateAvailable = false;
-        Random rand = new Random();
         Makhluk t;
         t = new Elang(0,0,0);
+        int[] coordinate;
             
-            /// cek apakah berjalan baik disini saat passing parameter
+        /// cek apakah berjalan baik disini saat passing parameter
         coordinate = board.getAvailableCoordinate();
 
         nSpawned++;
         nLife++;
-        id = nSpawned;
-
+        
+        int id = nSpawned;
+        int classType;
+        Random rand = new Random();
         classType = rand.nextInt(4) + 1;
         switch (classType) {
             case 1  :   t = new Elang(id,coordinate[0],coordinate[1]);
@@ -100,69 +95,72 @@ public class Manager {
                                 break;
             case 4  :   t = new Rumput(id,coordinate[0],coordinate[1]);
                                 break;
+            default :   assert false;
+                        break;
         }
         ListOfMakhluk.add(t);
-        board.setPoint(coordinate[0],coordinate[1], t.GetKarakter(), id);
+        board.setPoint(coordinate[0],coordinate[1], t.getKarakter(), id);
     }
 
-    void spawnRumput(){
+    void spawnRumput() {
 
-        int id,classType;
-        int coordinate[];
+        int classType;
+        int[] coordinate;
         boolean isCoordinateAvailable = false;
         Random rand = new Random();
         Makhluk t;
         t = new Elang(0,0,0);
             
-            /// cek apakah berjalan baik disini saat passing parameter
+        /// cek apakah berjalan baik disini saat passing parameter
         coordinate = board.getAvailableCoordinate();
 
         nSpawned++;
         nLife++;
-        id = nSpawned;
+        int id = nSpawned;
 
      
         t = new Rumput(id,coordinate[0],coordinate[1]);
                               
         ListOfMakhluk.add(t);
-        board.setPoint(coordinate[0],coordinate[1], t.GetKarakter(), id);
+        board.setPoint(coordinate[0],coordinate[1], t.getKarakter(), id);
 
 
     }
     
     
     /**
-     * spawnRandomAmount adalah prosedur untuk memunculkan makhluk dengan banyaknya random
+     * .prosedur untuk memunculkan makhluk dengan banyaknya random
      */
-    void spawnRandomAmount(){
+    void spawnRandomAmount() {
         Random rand = new Random();
         int amount = rand.nextInt(7) + 1;
-        for (int i = 1 ; i<amount ; i++) spawn(); 
+        for (int i = 1 ; i < amount ; i++) { 
+            spawn(); 
+        }
     }
     
     /**
-     * moveAll adalah prosedur untuk membuat semua makhluk bergerak / berpindah
+     * .moveAll adalah prosedur untuk membuat semua makhluk bergerak / berpindah
      */
-    void moveAll(){
-        int oldX,oldY,newX,newY;
+    void moveAll() {
         boolean isCoordinateAvailable ;
         
-        for (int i=0; i < ListOfMakhluk.size() ; i++) {
+        for (int i = 0; i < ListOfMakhluk.size() ; i++) {
             Iterator makluk = ListOfMakhluk.listIterator(i);
-            oldX = ListOfMakhluk.get(i).getX();
-            oldY = ListOfMakhluk.get(i).getY();
+            int oldX = ListOfMakhluk.get(i).getX();
+            int oldY = ListOfMakhluk.get(i).getY();
             isCoordinateAvailable = false;
 
             ListOfMakhluk.get(i).gerak();
-            newX = ListOfMakhluk.get(i).getX();
-            newY = ListOfMakhluk.get(i).getY();
-            if (board.isCoordinateAvailable(newX,newY)==1) {
+            int newX = ListOfMakhluk.get(i).getX();
+            int newY = ListOfMakhluk.get(i).getY();
+            if (board.isCoordinateAvailable(newX,newY) == 1) {
                 isCoordinateAvailable = true;
-                board.clearPoint(oldX,oldY,ListOfMakhluk.get(i).GetID());
-                board.setPoint(newX,newY,ListOfMakhluk.get(i).GetKarakter(),ListOfMakhluk.get(i).GetID());
-            }
-            else {
-                ListOfMakhluk.get(i).SetPoint(oldX,oldY);
+                board.clearPoint(oldX,oldY,ListOfMakhluk.get(i).getId());
+                board.setPoint(newX,newY,ListOfMakhluk.get(i)
+                      .getKarakter(),ListOfMakhluk.get(i).getId());
+            } else {
+                ListOfMakhluk.get(i).setPoint(oldX,oldY);
             }
             
     
@@ -171,27 +169,27 @@ public class Manager {
     }
 
     /**
-     * prosedur untuk menampilkan semua makhluk yang ada di dalam list
+     * .prosedur untuk menampilkan semua makhluk yang ada di dalam list
      */
-    void displayListOfMakhluk(){
-        for (int i=0; i < ListOfMakhluk.size() ; i++) {
-            System.out.println("ID : " + ListOfMakhluk.get(i).GetID() +
-                    " position " + ListOfMakhluk.get(i).getX() + " + " +
-                    ListOfMakhluk.get(i).getY());
+    void displayListOfMakhluk() {
+        for (int i = 0; i < ListOfMakhluk.size() ; i++) {
+            System.out.println("ID : " + ListOfMakhluk.get(i).getId() 
+                    + " position " + ListOfMakhluk.get(i).getX() + " + "
+                    + ListOfMakhluk.get(i).getY());
         }
     }
 
     /**
-     * resolveConflict adalah prosedur untuk menyelesaikan masalah tabrakan yang terjadi di board
+     * .resolveConflict adalah prosedur untuk menyelesaikan masalah tabrakan yang terjadi di board
      */
-    void resolveConflict(){
-        int id[];
-        char ch[];
+    void resolveConflict() {
+        int[] id;
+        char[] ch;
 
 
-        for (int y  = 0 ; y <30 ; y++) {
-            for (int x = 0 ; x<80 ;x++ ){
-                if (board.isConflictArea(x,y) ){
+        for (int y  = 0 ; y < 30 ; y++) {
+            for (int x = 0 ; x < 80 ;x++ ) {
+                if (board.isConflictArea(x,y) ) {
                     id = board.getFighterID(x,y);
                     ch = board.getFighterClass(x,y);
                     char C1 = ch[0];
@@ -199,12 +197,13 @@ public class Manager {
                     int ID1 = id[0];
                     int ID2 = id[1];
                     
-                    if (((C1 == 'E') && (C2=='A')) || (C1 == C2) || ((C1 == 'A') && (C2 == 'C'))
-                    || ((C1 == 'E') && (C2=='C')) || (C2 == 'R') || ((C1=='X') && (C2=='E'))){
+                    if (((C1 == 'E') && (C2 == 'A')) 
+                        || (C1 == C2) || ((C1 == 'A') && (C2 == 'C'))
+                        || ((C1 == 'E') && (C2 == 'C')) || (C2 == 'R') 
+                        || ((C1 == 'X') && (C2 == 'E'))) {
                         board.clearPoint(x,y,ID2);
                         kill(ID2);
-                    }
-                    else {
+                    } else {
                         board.clearPoint(x,y,ID1);
                         kill(ID1);
                     }
@@ -216,21 +215,20 @@ public class Manager {
     }
 
     /**
-     * kill adalah prosedur untuk membunuh makhluk dengan id = ID
+     * .kill adalah prosedur untuk membunuh makhluk dengan id = ID
      * @param ID adalah parameter untuk membuat makhluk yang memiliki id = ID terbunuh
      */
-    void kill(int ID){
+    void kill(int ID) {
         boolean done = false;
-        int IDtarget, i=0;
+        int i = 0;
         Iterator<Makhluk> ci = ListOfMakhluk.iterator();
 
         while (ci.hasNext() && (!done)) {
-            IDtarget = ListOfMakhluk.get(i).GetID();
+            int IDtarget = ListOfMakhluk.get(i).getId();
             if (IDtarget == ID) {
                 ListOfMakhluk.remove(i);
                 done = true;
-            }
-            else {
+            } else {
                 ci.next();
             }
             i++;
@@ -239,11 +237,11 @@ public class Manager {
     }
     
     /**
-    * Untuk menghitung jumlah element board yang kosong ada berapa
+    * .Untuk menghitung jumlah element board yang kosong ada berapa
     * Element dikatakan kosong jika slot satu dan slot dua kosong
     * @return jumlah slot kosong
     */
-    public int getCountEmptySlot(){
+    public int getCountEmptySlot() {
         return board.getEmptySlot();
     }
     

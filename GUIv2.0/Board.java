@@ -34,8 +34,7 @@ public class Board {
 	public int isCoordinateAvailable(int x, int y){
 		if ((x >= Settings.BOARD_WIDTH) || (y >= Settings.BOARD_HEIGHT)){
 			return 0;
-		}
-		else {
+		} else {
 		return elem[x][y].isAvailable();
 		}
 	}
@@ -63,8 +62,7 @@ public class Board {
 		if (isCoordinateAvailable(x,y) == 1) {
 			if (elem[x][y].isSlotOneAvailable()) {
 				elem[x][y].setBoardElement(0,id,element);
-			}
-			else {
+			} else {
 				elem[x][y].setBoardElement(1,id,element);
 			}
 		}
@@ -80,8 +78,7 @@ public class Board {
 		if( elem[x][y].getID(0) == id) {
 			elem[x][y].clearBoardElement(0);
 			elem[x][y].downgradeElement();
-		}
-		else if ( elem[x][y].getID(1) == id) {
+		} else if ( elem[x][y].getID(1) == id) {
 			elem[x][y].clearBoardElement(0);
 		}
 	}
@@ -98,8 +95,7 @@ public class Board {
 		int result = elem[x][y].isConflict();
 		if (result == 1) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 

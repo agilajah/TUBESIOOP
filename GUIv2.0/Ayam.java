@@ -88,7 +88,7 @@ class Ayam extends Hewan {
                     yy=(Settings.BOARD_HEIGHT - 2);
             else if (yy < 0)
                     yy=1;
-            SetPoint(xx,yy);
+            setPoint(xx,yy);
 
         } else {
             //do nothing
