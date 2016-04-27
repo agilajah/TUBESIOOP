@@ -26,44 +26,99 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
- * .<h1> Manager </h1>
- * Kelas Manager digunakan untuk mengatur segala aktivitas yang terjadi 
- * di papan / Board yang ditampilkan
+ * Kelas Manager digunakan untuk mengatur segala aktivitas yang terjadi
+ * di papan / Board yang ditampilkan.
  * @author Farhan Ghifari / 13515602
  */
 
 public class ViewerGUI extends JPanel implements ActionListener {
     /**
-     * .ListOfMakhluk adalah variabel bertipe List of Makhluk
-     * untuk menyimpan list makhluk
-     * Board Manager
+     * constant value of ten.
      */
-   
-    private Timer timer;
-    private Craft craft;
-    private int DELAY;
-    private boolean isPlayerDead;
-    private int counter;
-    private Manager myManager;
-    private int points;
-    
+    private static final int TEN = 10;
     /**
-     * .konstruktor kelas viewer versi grafis
+     * constant value of fourty.
+     */
+    private static final int FOURTY = 40;
+    /**
+     * constant value of sixty.
+     */
+    private static final int SIXTY = 60;
+    /**
+     * constant value of thirty.
+     */
+    private static final int THIRTY = 30;
+    /**
+     * constant value of five.
+     */
+    private static final int FIVE = 5;
+    /**
+     * constant value of two.
+     */
+    private static final int TWO = 2;
+    /**
+     * constant value of three.
+     */
+    private static final int THREE = 3;
+    /**
+     * constant value of zero.
+     */
+    private static final int ZERO = 0;
+    /**
+     * constant value of fiveteen.
+     */
+    private static final int FIVETEEN = 15;
+    /**
+     * timer untuk menghitung waktu.
+     */
+    private Timer timer;
+    /**
+     * variabel craft.
+     */
+    private Craft craft;
+    /**
+     * delay untuk delay.
+     */
+    private int delay;
+    /**
+     * boolean apakah player mati.
+     */
+    private boolean isPlayerDead;
+    /**
+     * counter untuk menghitung.
+     */
+    private int counter;
+    /**
+     * myManager untuk memanage.
+     */
+    private Manager myManager;
+    /**
+     * point.
+     */
+    private int points;
+
+    /**
+     * konstruktor kelas viewer versi grafis.
      */
     public ViewerGUI() {
-        myManager = new Manager(10);
-        DELAY = 5;  
+        myManager = new Manager(TEN);
+        delay = FIVE;
         addKeyListener(new TAdapter());
         setFocusable(true);
         setBackground(Color.BLACK);
         craft = new Craft();
-        timer = new Timer(DELAY, this);
-        timer.start();       
+        timer = new Timer(delay, this);
+        timer.start();
         isPlayerDead = false;
         points = 0;
     }
 
-    /** Returns an ImageIcon, or throwing exceptions if the path was invalid. */
+    /**
+     * Returns an ImageIcon, or throwing exceptions if the path was invalid.
+     * @param imagename
+     * @return image
+     * @throws ImageException
+     */
     private ImageIcon createImageIcon(String imagename) throws ImageException {
         String path = "/gambar/" + imagename;
         //URL imgURL = new URL(path);
@@ -74,6 +129,10 @@ public class ViewerGUI extends JPanel implements ActionListener {
             throw new ImageException("Image not found!");
         }
     }
+    /**
+     * untuk mewarnai background.
+     * @param g
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -87,32 +146,42 @@ public class ViewerGUI extends JPanel implements ActionListener {
         Toolkit.getDefaultToolkit().sync();
     }
 
+    /**
+     * overDrawing means after drawing done.
+     * @param g
+     */
     private void overDrawing(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         try {
             ImageIcon ii = createImageIcon("go.png");
             Image image = ii.getImage();
-            g2d.drawImage(image, Settings.BOARD_WIDTH / 2, Settings.BOARD_HEIGHT / 2,this);
-        }
-        catch (ImageException e) {
-            System.out.println("Error occured when trying to get image for ViewGUI class: " + e.getMessage());
+            g2d.drawImage(image, Settings.BOARD_WIDTH / 2,
+                    Settings.BOARD_HEIGHT / 2, this);
+        } catch (ImageException e) {
+            System.out.println("Error occured when trying"
+                    + "to get image for ViewGUI class: " + e.getMessage());
         }
 
     }
 
+    /**
+     * mulai menggambar.
+     * @param g
+     */
     private void doDrawing(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setColor(Color.WHITE);
-        g2d.setFont(new Font(Font.DIALOG, Font.BOLD, 40));
+        g2d.setFont(new Font(Font.DIALOG, Font.BOLD, FOURTY));
         FontMetrics fm = g.getFontMetrics();
         String msg = Integer.toString(points);
         int msgWidth = fm.stringWidth(msg);
         int msgAscent = fm.getAscent();
-        g2d.drawString(msg, Settings.BOARD_WIDTH + 30, 60);
+        g2d.drawString(msg, Settings.BOARD_WIDTH + THIRTY, SIXTY);
 
-        g2d.drawImage(craft.getImage(), craft.getX(), craft.getY(), this);  
-        Rectangle player = new Rectangle(craft.getX(), craft.getY(),15,15);
+        g2d.drawImage(craft.getImage(), craft.getX(), craft.getY(), this);
+        Rectangle player = new Rectangle(craft.getX(),
+                                        craft.getY(), FIVETEEN, FIVETEEN);
 
         Iterator it  =  Manager.ListOfMakhluk.iterator();
 
@@ -121,60 +190,73 @@ public class ViewerGUI extends JPanel implements ActionListener {
             boolean isEatable = false;
             int counterRumput = 0;
 
-            if ( (makhluk.getKarakter() == 'R') || (makhluk.getKarakter() == 'X') ) {
+            if ((makhluk.getKarakter() == 'R')
+                    || (makhluk.getKarakter() == 'X')) {
                 isEatable = true;
             }
-            
-           
+
             ImageIcon ii = new ImageIcon("ayam.png");
             Image image = ii.getImage();
-           
-            g2d.drawImage(makhluk.getImage(), makhluk.getX(), makhluk.getY(), this); 
+
+            g2d.drawImage(makhluk.getImage(), makhluk.getX(),
+                            makhluk.getY(), this);
             Rectangle enemy;
 
-            if ( makhluk.getKarakter() == 'X') {
-                enemy = new Rectangle(makhluk.getX(), makhluk.getY(),3,3);
+            if (makhluk.getKarakter() == 'X') {
+                enemy = new Rectangle(makhluk.getX(),
+                                        makhluk.getY(), THREE, THREE);
             } else {
-                enemy = new Rectangle(makhluk.getX(), makhluk.getY(),10,10);
+                enemy = new Rectangle(makhluk.getX(), makhluk.getY(), TEN, TEN);
             }
 
-            if ( enemy.intersects(player)) {
+            if (enemy.intersects(player)) {
                 if (isEatable) {
                         Manager.ListOfMakhluk.remove(makhluk);
                         myManager.spawnRumput();
                         myManager.spawnRandomAmount();
                         counter++;
                         points++;
-                        if (counter == 5) {
-                            if ( DELAY >= 2) {
-                                DELAY--;
-                                counter = 0;
-                            }
-
+                        if (counter == FIVE && delay >= TWO) {
+                            delay--;
+                            counter = ZERO;
                         }
-                    
                 } else {
-                    craft.changeCraft();   
-                    isPlayerDead = true;   
+                    craft.changeCraft();
+                    isPlayerDead = true;
                 }
             }
         }
     }
 
+    /**
+     * actionPerformed.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         craft.move();
-        repaint();  
+        repaint();
     }
 
+    /**
+     * TAdapter.
+     */
     private class TAdapter extends KeyAdapter {
+        /**
+         * saat key di release.
+         * @param e
+         */
         @Override
         public void keyReleased(KeyEvent e) {
-            if ( !isPlayerDead) {
+            if (!isPlayerDead) {
                 craft.keyReleased(e);
             }
         }
 
+        /**
+         * saat key di tekan.
+         * @param e
+         */
         @Override
         public void keyPressed(KeyEvent e) {
             if (!isPlayerDead) {

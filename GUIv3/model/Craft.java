@@ -80,7 +80,7 @@ public class Craft {
     }
 
     /**
-     * a method used for change craft's field such as image icon
+     * a method used for change craft's field such as image icon.
      */
     public void changeCraft() {
         try {

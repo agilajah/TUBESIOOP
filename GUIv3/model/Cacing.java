@@ -61,7 +61,7 @@ public class Cacing extends Hewan {
      * @param yy input parameter koordinat y
      * @return return ture if hit the bottom and upper wall
      */
-    public boolean isYHitTheWall(final int yy) {
+    public final boolean isYHitTheWall(final int yy) {
         return (yy <= 0 || yy >= (Settings.BOARD_HEIGHT - 1));
     }
 

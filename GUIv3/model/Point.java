@@ -7,16 +7,16 @@ package model;
  */
 public class Point {
     /**
-     * .variabel point x
+     * variabel point x.
      */
     private int x;
     /**
-     * .variabel point y
+     * variabel point y.
      */
     private int y;
     
     /**
-     * .Konstruktor dengan parameter
+     * Konstruktor dengan parameter.
      * @param x untuk input nilai x
      * @param y untuk input nilai y
      */
@@ -26,7 +26,7 @@ public class Point {
     }
     
     /**
-     * .getter x
+     * getter x.
      * @return mengembalikan x
      */
     int getX() {
@@ -34,7 +34,7 @@ public class Point {
     }
 
     /**
-     * .Setter x
+     * Setter x.
      * @param x melakukan input ke x
      */
     void setX(int x) {
@@ -42,7 +42,7 @@ public class Point {
     }
 
     /**
-     * .getter y
+     * getter y.
      * @return mengembalikan nilai y
      */
     int getY() {
@@ -50,7 +50,7 @@ public class Point {
     }
 
     /**
-     * .setter y
+     * setter y.
      * @param y melakukan input ke nilai y
      */
     void setY(int y ) {
@@ -58,7 +58,7 @@ public class Point {
     }
 
     /**
-     * .setter x y
+     * setter x y.
      * @param x untuk input nilai x
      * @param y untuk input nilai y
      */
@@ -68,10 +68,9 @@ public class Point {
     }
 
     /**
-     * .untuk mencetak point (x,y)
+     * untuk mencetak point (x,y).
      */
     void Print() {
         System.out.println("(" + x + "," + y + ")");
     }
-    
 }

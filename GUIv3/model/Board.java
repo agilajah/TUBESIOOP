@@ -8,7 +8,7 @@ package model;
 
 public class Board {
 
-	/**
+    /**
      * variabel array of BoardElement.
      */
 	private BoardElement[][] elem;
@@ -26,8 +26,17 @@ public class Board {
 			}
 		}
 	}
+    /**
+     * Getter ID element in board.
+     * @param x parameter kordinat x
+     * @param y parameter kordinat y
+     * @return elem[x][y].getID(0)
+     */
+    public int getIDElement(int x, int y){
+        return elem[x][y].getID(0);
+    }
 
-	/**
+    /**
      * untuk melakukan pengecekan apakah kordinatnya tersedia atau tidak.
      * @param x input koordinat x
      * @param y input koordinat y

@@ -41,7 +41,7 @@ public class Manager {
 
 
     /**
-     * .konstruktor kelas manager
+     * konstruktor kelas manager.
      * @param x parameter untuk membuat makhluk sebanyak x
      */
     public Manager(int x) {
@@ -133,7 +133,7 @@ public class Manager {
      */
     public void moveAll() {
         boolean isCoordinateAvailable ;
-        
+  
         for (int i = 0; i < ListOfMakhluk.size() ; i++) {
             Iterator makluk = ListOfMakhluk.listIterator(i);
             int oldX = ListOfMakhluk.get(i).getX();
@@ -226,15 +226,11 @@ public class Manager {
     }
     
     /**
-    * .Untuk menghitung jumlah element board yang kosong ada berapa
-    * Element dikatakan kosong jika slot satu dan slot dua kosong
+    * Untuk menghitung jumlah element board yang kosong ada berapa
+    * Element dikatakan kosong jika slot satu dan slot dua kosong.
     * @return jumlah slot kosong
     */
-    public int getCountEmptySlot() {
-        int countEmptySlot = board.getEmptySlot();
-        
-        assert countEmptySlot>=0: "empty slot<0";
-        return countEmptySlot;
+    public int getCountEmptySlot(){
+        return board.getEmptySlot();
     }
-    
 }

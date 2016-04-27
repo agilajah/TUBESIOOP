@@ -5,24 +5,24 @@ import javax.swing.ImageIcon;
 import java.net.URL;
 
 
-/**.
+/**
  * @author Amal Qurany / 13514078
  */
 public abstract class Makhluk {
     /**
-     * .variabel integer id
+     * variabel integer id.
      */
     private int id;
     /**
-     * .variabel integer kekuatan
+     * variabel integer kekuatan.
      */
     private int kekuatan;
     /** 
-     * .variabel Point P
+     * variabel Point P.
      */
     private Point p;
     /**
-     * .variabel karakter bertipe char.
+     * variabel karakter bertipe char.
      */
     private char karakter;
 
@@ -43,8 +43,8 @@ public abstract class Makhluk {
      */
     Makhluk(int id, int x, int y, char karakter, int kekuatan) {
         setId(id);
-        p = new Point(x,y);
-        setPoint(x,y);
+        p = new Point(x, y);
+        setPoint(x, y);
         setKarakter(karakter);
         setKekuatan(kekuatan);
     }
@@ -77,7 +77,7 @@ public abstract class Makhluk {
      * @param y input parameter koordinat y
      */
     public void setPoint(int x, int y) {
-        p.setXY(x,y);
+        p.setXY(x, y);
     }
 
     /**
@@ -156,10 +156,6 @@ public abstract class Makhluk {
      * prosedur ini kosong dan akan di implementasikan di kelas turunan.
      */
     public abstract void gerak();
-
-    public void cobaMethod(){
-        int x = 0;
-    }
 
     /** Returns an ImageIcon, or throwing exceptions if the path was invalid. */
     public ImageIcon createImageIcon(String imagename) throws ImageException {

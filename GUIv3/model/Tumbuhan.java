@@ -8,10 +8,26 @@ public abstract class Tumbuhan extends Makhluk {
     /**
      * .parameter untuk waktu tumbuh tumbuhan
      */
-    protected int growTime;
+    private int growTime;
 
     /**
-     * .konstruktor tumbuhan
+     * Getter growTime.
+     * @return growTime.
+     */
+    public final int getGrowTime() {
+        return growTime;
+    }
+
+    /**
+     * Setter growTime.
+     * @param sett adalah parameter untuk set growTime.
+     */
+    public final void setGrowTime(final int sett) {
+        growTime = sett;
+    }
+
+    /**
+     * konstruktor tumbuhan.
      * @param id parameter input id tumbuhan
      * @param x parameter input koordinat x tumbuhan
      * @param y parameter input koordinat y tumbuhan

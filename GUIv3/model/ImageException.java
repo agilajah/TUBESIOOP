@@ -6,7 +6,7 @@ package model;
 public class ImageException extends Exception {
 
     /**
-     * Image Exception constructor
+     * Image Exception constructor.
      * @param message as the message that will be thrown
      */
     public ImageException(String message) {

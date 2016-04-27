@@ -114,17 +114,21 @@ public class Elang extends Hewan {
      * dengan korelasi arah berikut ini.
      * korelasi arah :
      *  dinding kanan : 1, 5, 6
-     *  dinding kiri	: 3, 7, 8
-     *  dinding atas 	: 2, 5, 6
-     *  dinding bawah 	: 4, 6, 8
+     *  dinding kiri  : 3, 7, 8
+     *  dinding atas  : 2, 5, 6
+     *  dinding bawah : 4, 6, 8
      * @param temp parameter input arah
      * @return return true if the direction is same
      */
     private boolean isSameDirection(final int temp) {
-        if (((temp == ONE || temp == FIVE || temp == SIX) && (arah == 1 || arah == FIVE || arah == SIX))
-                || ((temp == THREE || temp == SEVEN || temp == EIGHT) && (arah == THREE || arah == SEVEN || arah == EIGHT))
-                || ((temp == TWO || temp == FIVE || temp == SIX) && (arah == TWO || arah == FIVE || arah == SIX))
-                || ((temp == FOUR || temp == SIX || temp == EIGHT) && (arah == FOUR || arah == SIX || arah == EIGHT))) {
+        if (((temp == ONE || temp == FIVE || temp == SIX) 
+                && (arah == 1 || arah == FIVE || arah == SIX))
+            || ((temp == THREE || temp == SEVEN || temp == EIGHT)
+                && (arah == THREE || arah == SEVEN || arah == EIGHT))
+            || ((temp == TWO || temp == FIVE || temp == SIX)
+                && (arah == TWO || arah == FIVE || arah == SIX))
+            || ((temp == FOUR || temp == SIX || temp == EIGHT)
+                && (arah == FOUR || arah == SIX || arah == EIGHT))) {
             return true;
         } else {
             return false;

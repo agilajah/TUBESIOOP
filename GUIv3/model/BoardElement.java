@@ -34,8 +34,7 @@ public class BoardElement {
      * @param ID parameter input ID
      * @param element parameter input karakter element
      */
-	public void setBoardElement(final int idx,
-								final int ID, final char element) {
+	public void setBoardElement(final int idx, final int ID, final char element) {
 		this.ID[idx] = ID;
 		this.element[idx] = element;
 	}
