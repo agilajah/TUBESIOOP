@@ -71,43 +71,36 @@ public class Manager {
     void spawn() {
         boolean isCoordinateAvailable = false;
         Makhluk t;
-        t = new Elang(0,0,0);
+        t = new Elang(0, 0, 0);
         int[] coordinate;
-            
+
         /// cek apakah berjalan baik disini saat passing parameter
-        try {
-            coordinate = board.getAvailableCoordinate();
-            nSpawned++;
-            nLife++;
+        coordinate = board.getAvailableCoordinate();
+        nSpawned++;
+        nLife++;
 
-            int id = nSpawned;
-            int classType;
-            Random rand = new Random();
-            classType = rand.nextInt(4) + 1;
-            switch (classType) {
-                case 1:
-                    t = new Elang(id, coordinate[0], coordinate[1]);
-                    break;
-                case 2:
-                    t = new Ayam(id, coordinate[0], coordinate[1]);
-                    break;
-                case 3:
-                    t = new Cacing(id, coordinate[0], coordinate[1]);
-                    break;
-                case 4:
-                    t = new Rumput(id, coordinate[0], coordinate[1]);
-                    break;
-                default:
-                    assert false;
-            }
-            ListOfMakhluk.add(t);
-            board.setPoint(coordinate[0], coordinate[1], t.getKarakter(), id);
+        int id = nSpawned;
+        int classType;
+        Random rand = new Random();
+        classType = rand.nextInt(4) + 1;
+        switch (classType) {
+            case 1:
+                t = new Elang(id, coordinate[0], coordinate[1]);
+                break;
+            case 2:
+                t = new Ayam(id, coordinate[0], coordinate[1]);
+                break;
+            case 3:
+                t = new Cacing(id, coordinate[0], coordinate[1]);
+                break;
+            case 4:
+                t = new Rumput(id, coordinate[0], coordinate[1]);
+                break;
+            default:
+                assert false;
         }
-        catch(BoardException e) {
-            System.out.println("An error occured:" + e.getMessage());
-        }
-
-
+        ListOfMakhluk.add(t);
+        board.setPoint(coordinate[0], coordinate[1], t.getKarakter(), id);
     }
 
     void spawnRumput() {
@@ -120,22 +113,16 @@ public class Manager {
         t = new Elang(0,0,0);
             
         /// cek apakah berjalan baik disini saat passing parameter
-        try {
-            coordinate = board.getAvailableCoordinate();
-            nSpawned++;
-            nLife++;
-            int id = nSpawned;
+        coordinate = board.getAvailableCoordinate();
+        nSpawned++;
+        nLife++;
+        int id = nSpawned;
 
 
-            t = new Rumput(id,coordinate[0],coordinate[1]);
+        t = new Rumput(id,coordinate[0],coordinate[1]);
 
-            ListOfMakhluk.add(t);
-            board.setPoint(coordinate[0],coordinate[1], t.getKarakter(), id);
-
-        }
-        catch(BoardException e) {
-            System.out.println("An error occured:" + e.getMessage());
-        }
+        ListOfMakhluk.add(t);
+        board.setPoint(coordinate[0],coordinate[1], t.getKarakter(), id);
     }
     
     
